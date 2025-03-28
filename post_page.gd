@@ -15,7 +15,7 @@ func _ready() -> void:
 		howManyComments *= -1
 	print(howManyComments)
 	$CanvasLayer/Control/Title.text = Global.CurrentPost[1]
-	$CanvasLayer/Control/RabbitHole.text = Global.CurrentPost[5]
+	$CanvasLayer/Control/RabbitHole.text = "[wave amp=25.0 freq=5.0 connected=1]mall://shovel." + Global.CurrentPost[5] + ".net"
 	var replyBoxInst = replyBox.instantiate()
 	$MarginContainer/PageScroll/PageVBox.add_child(replyBoxInst)
 	

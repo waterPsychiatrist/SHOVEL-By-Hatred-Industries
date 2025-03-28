@@ -17,7 +17,9 @@ func _ready() -> void:
 		"Write text here!"
 	]
 	$ReplyBox/MarginContainer/ImageAndTextSeperator/ScrollContainer/Text/TextEdit.placeholder_text = rngPlaceholderText.pick_random()
-
+	var image = Image.load_from_file("user://images/pfp.png")
+	var playerPFP = ImageTexture.create_from_image(image)
+	$ReplyBox/MarginContainer/ImageAndTextSeperator/ProfilePicture.texture = playerPFP
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,4 +30,5 @@ func _process(delta: float) -> void:
 		commentInst.name = "PlayerReply"
 		commentInst.isPlayerComment = true
 		self.add_child(commentInst)
+		self.move_child(self.get_child(-1), 1)
 		

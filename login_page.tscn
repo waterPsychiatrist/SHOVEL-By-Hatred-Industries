@@ -177,6 +177,7 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PageAndShovelSeperator/PageContents/ScrollContainer"]
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
@@ -353,9 +354,11 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("6_8v3xk")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "SHOVEL by Hatred Industries is a social media website where your voice matters! Discuss with your fellow shovelers bout current world topics and even invest in the stock market if you're feeling frisky! No hate speech of ANY kind allowed*.
+text = "SHOVEL by Hatred Industries is a social media website, I guess, where your voice doesn't matter. Discuss with your fellow shovelers about current world topics, or not, and even invest in the stock market if you're feeling daring. No hate speech of ANY kind allowed*.
 [font_size=10]*most of the time[/font_size]
 Shovel is a property of Hatred Industries. We are not responsible for the content seen on the website.
+
+
 "
 fit_content = true
 scroll_active = false

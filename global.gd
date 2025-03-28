@@ -167,6 +167,8 @@ func randomizeString(rstr : String, letterCase) -> String:
 			rstr = rstr.replacen("/number/", str(randi_range(0, 9)))
 		if "/number2/" in rstr:
 			rstr = rstr.replacen("/number2/", str(randi_range(10, 99)))
+		if "/number4/" in rstr:
+			rstr = rstr.replacen("/number4/", str(randi_range(1000, 9999)))
 		if letterCase:
 			var letterStatus = randi_range(1, 6)
 			match letterStatus:

@@ -19,11 +19,15 @@ func _process(delta: float) -> void:
 			var packedScene = ResourceLoader.load_threaded_get(mainPageScene)
 			get_tree().change_scene_to_packed(packedScene)
 func _on_log_in_pressed() -> void:
-	if usernameBox.text.replacen(" ", "") != "" && passwordBox.text.replacen(" ", "") != "":
-		SaveDataManager.loadSave()
-		goToMain = true
-	else:
-		$PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/HelpText.text = "Username / password cannot be empty."
+		if usernameBox.text.replacen(" ", "") != "" && passwordBox.text.replacen(" ", "") != "":
+			print(usernameBox.text.replacen(" ", "") + " / " + passwordBox.text)
+			if SaveDataManager.checkPassword(usernameBox.text.replacen(" ", ""), passwordBox.text) == true:
+				SaveDataManager.loadSave()
+				goToMain = true
+			else:
+				$PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/HelpText.text = "Password incorrect. Please try again."
+		else:
+			$PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/HelpText.text = "Username / password cannot be empty."
 func _on_sign_up_pressed() -> void:
 	if usernameBox.text.replacen(" ", "") != "" && passwordBox.text.replacen(" ", "") != "":
 		Global.username = $PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/UMargin/UsernameTextEdit.text.replacen(" ", "")
