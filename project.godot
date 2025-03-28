@@ -14,11 +14,15 @@ config/name="SHOVEL"
 config/tags=PackedStringArray("2d", "experimental")
 run/main_scene="uid://dm6jmv67shkfe"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0.211765, 0.176471, 0.231373, 1)
+boot_splash/show_image=false
+boot_splash/use_filter=false
 config/icon="uid://s7e0nsocb2md"
 
 [autoload]
 
 Global="*res://global.gd"
+SaveDataManager="*res://savedatamanager.gd"
 
 [display]
 

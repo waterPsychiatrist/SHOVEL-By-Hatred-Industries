@@ -320,20 +320,7 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_wewh5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8v3xk")
 text = "Sign Up"
 
-[node name="HelpText" type="RichTextLabel" parent="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
-theme_override_fonts/normal_font = ExtResource("6_8v3xk")
-theme_override_font_sizes/normal_font_size = 25
-bbcode_enabled = true
-text = "No spaces on the username, preferably."
-fit_content = true
-shortcut_keys_enabled = false
-horizontal_alignment = 2
-
-[node name="WhatIsShovel" type="RichTextLabel" parent="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer"]
+[node name="UserText2" type="RichTextLabel" parent="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -369,9 +356,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("ViewportTexture_ce8hi")
 
-[connection signal="editing_toggled" from="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/UMargin/UsernameTextEdit" to="." method="_on_username_text_edit_editing_toggled"]
-[connection signal="focus_entered" from="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/UMargin/UsernameTextEdit" to="." method="_on_username_text_edit_focus_entered"]
-[connection signal="editing_toggled" from="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/PMargin/PasswordTextEdit" to="." method="_on_password_text_edit_editing_toggled"]
-[connection signal="focus_exited" from="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/PMargin/PasswordTextEdit" to="." method="_on_password_text_edit_focus_exited"]
 [connection signal="pressed" from="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/EnterButtons/LogIn" to="." method="_on_log_in_pressed"]
 [connection signal="pressed" from="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/EnterButtons/SignUp" to="." method="_on_sign_up_pressed"]

@@ -1,6 +1,7 @@
 extends Node
 
 var username = "pussySlayer6969"
+var password = "jamesbrown"
 var myPosts = {}
 var myReplies = {}
 var myDMs = {}
@@ -13,7 +14,7 @@ var noun : String = "Wizards"
 var politicalParty : String = "abraxas"
 var person : String = "Dean Winchester"
 var stock : String = "LORD"
-var verb : String = "Copes"
+var verb : String = "copes"
 var rabbithole : String = "pornography"
 #stockmarkets = NAME : FULL NAME, 
 #DESCRIPTION, 
