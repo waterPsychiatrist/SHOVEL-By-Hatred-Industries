@@ -1,0 +1,112 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceafoxq73v1b7"]
+
+[ext_resource type="Script" uid="uid://dmhn75tdrgm0m" path="res://post_page.gd" id="1_6p83s"]
+[ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="1_an3au"]
+
+[sub_resource type="Theme" id="Theme_spg8y"]
+default_font = ExtResource("1_an3au")
+default_font_size = 25
+
+[node name="PostPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6p83s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.211765, 0.176471, 0.231373, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/Control"]
+texture_filter = 3
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("1_an3au")
+theme_override_fonts/mono_font = ExtResource("1_an3au")
+theme_override_fonts/italics_font = ExtResource("1_an3au")
+theme_override_fonts/bold_italics_font = ExtResource("1_an3au")
+theme_override_fonts/bold_font = ExtResource("1_an3au")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "\"WIZARD MAGIC\" Bio-slave says. \"WIZARD MAGIC\" Bio-slave says."
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="RabbitHole" type="RichTextLabel" parent="CanvasLayer/Control"]
+texture_filter = 3
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme = SubResource("Theme_spg8y")
+bbcode_enabled = true
+text = "[wave amp=25.	0 freq=5.0 connected=1]mall://shovel.politics.net"
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 45
+theme_override_constants/margin_bottom = 45
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0.0901961, 0.0705882, 0.054902, 1)
+
+[node name="PageScroll" type="ScrollContainer" parent="MarginContainer"]
+z_index = 4
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="PageVBox" type="VBoxContainer" parent="MarginContainer/PageScroll" groups=["PageContainer"]]
+custom_minimum_size = Vector2(1190, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2

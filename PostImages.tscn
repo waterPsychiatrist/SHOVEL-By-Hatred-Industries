@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://diqrj56c5t7a3"]
+
+[ext_resource type="Script" uid="uid://brspu762qbdkv" path="res://post_images.gd" id="1_e28pj"]
+[ext_resource type="Texture2D" uid="uid://blwm3dxgdwysd" path="res://Graphics/Images/Memes/1.png" id="1_s4wam"]
+[ext_resource type="Texture2D" uid="uid://k5do8tlxur35" path="res://Graphics/Images/Memes/BottomText/1.png" id="2_e28pj"]
+[ext_resource type="Texture2D" uid="uid://b7oj3i5yglogx" path="res://Graphics/Images/Memes/TopText/1.png" id="3_vjp3e"]
+[ext_resource type="FontFile" uid="uid://ddjwyr06vxo03" path="res://impact.ttf" id="5_vjp3e"]
+
+[node name="Images" type="Control"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 120.0
+scale = Vector2(6, 6)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+script = ExtResource("1_e28pj")
+
+[node name="Meme" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 120.0
+grow_horizontal = 2
+texture = ExtResource("1_s4wam")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="BottomText" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e28pj")
+expand_mode = 1
+
+[node name="TopText" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vjp3e")
+expand_mode = 1
+
+[node name="TopTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 3
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0.258824, 0.145098, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("5_vjp3e")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "CEO MINDSET AFFECTS"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="BottomTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 3
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0.258824, 0.145098, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("5_vjp3e")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "NICOTINE ADDICTED FOOLS"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 2

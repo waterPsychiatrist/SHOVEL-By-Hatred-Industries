@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcm8ucrbt7fal"]
+
+[ext_resource type="Script" uid="uid://wn4jhbdb2eae" path="res://reply_box.gd" id="1_ohxfd"]
+[ext_resource type="Texture2D" uid="uid://dcktvi8x7514c" path="res://Graphics/Images/ProfilePictures/1.png" id="2_e6hsc"]
+[ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="3_rxlkf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbp32"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_76b4k"]
+content_margin_right = 12.0
+color = Color(0.211765, 0.176471, 0.231373, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 10
+vertical = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4j6xj"]
+
+[node name="ReplyBoxAndComments" type="VBoxContainer"]
+custom_minimum_size = Vector2(780, 150)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -390.0
+offset_right = 390.0
+offset_bottom = 304.0
+grow_horizontal = 2
+script = ExtResource("1_ohxfd")
+
+[node name="ReplyBox" type="Control" parent="."]
+custom_minimum_size = Vector2(780, 150)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ReplyBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.176471, 0.231373, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ReplyBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="ReplyBox/MarginContainer"]
+layout_mode = 2
+color = Color(0.0901961, 0.0705882, 0.054902, 1)
+
+[node name="ImageAndTextSeperator" type="HBoxContainer" parent="ReplyBox/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="ProfilePicture" type="TextureRect" parent="ReplyBox/MarginContainer/ImageAndTextSeperator"]
+material = SubResource("ShaderMaterial_jbp32")
+layout_mode = 2
+texture = ExtResource("2_e6hsc")
+
+[node name="VSeparator" type="VSeparator" parent="ReplyBox/MarginContainer/ImageAndTextSeperator"]
+custom_minimum_size = Vector2(20, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_76b4k")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ReplyBox/MarginContainer/ImageAndTextSeperator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Text" type="VBoxContainer" parent="ReplyBox/MarginContainer/ImageAndTextSeperator/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextEdit" type="TextEdit" parent="ReplyBox/MarginContainer/ImageAndTextSeperator/ScrollContainer/Text"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_rxlkf")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4j6xj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4j6xj")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_4j6xj")
+placeholder_text = "Write the next big take."
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+wrap_mode = 1
+caret_blink = true

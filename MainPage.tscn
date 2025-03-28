@@ -1,0 +1,318 @@
+[gd_scene load_steps=25 format=3 uid="uid://bnxq7ic64m576"]
+
+[ext_resource type="Script" uid="uid://ekh72aw1cr5y" path="res://main_page.gd" id="1_5lbjv"]
+[ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="2_con45"]
+[ext_resource type="Shader" uid="uid://dja402jila63l" path="res://grid.gdshader" id="2_gnibc"]
+[ext_resource type="PackedScene" uid="uid://bxu1o3rd3regi" path="res://Models/shovel.glb" id="2_jcquv"]
+[ext_resource type="Texture2D" uid="uid://bibg4v8dvywex" path="res://Graphics/WebsiteUI/LoadingCircle.png" id="2_lc84y"]
+[ext_resource type="Texture2D" uid="uid://bdl84w7dyoutc" path="res://Graphics/WebsiteUI/Grid.png" id="3_wqwo8"]
+[ext_resource type="Shader" uid="uid://bjj1e0axkqpkp" path="res://Posterization.gdshader" id="4_blum4"]
+[ext_resource type="Texture2D" uid="uid://dn7hura2au15w" path="res://Graphics/WebsiteUI/Margins.png" id="4_wqwo8"]
+[ext_resource type="PackedScene" uid="uid://o1vdexpthk7t" path="res://stock_market.tscn" id="8_vvlxm"]
+
+[sub_resource type="Environment" id="Environment_t00d2"]
+background_mode = 1
+background_color = Color(0.0901961, 0.0705882, 0.054902, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t00d2"]
+render_priority = 0
+shader = ExtResource("2_gnibc")
+shader_parameter/sky_texture = ExtResource("3_wqwo8")
+shader_parameter/lock_aspect = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/fov = Vector2(300, 300)
+shader_parameter/tiling = Vector2i(2, 2)
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jcquv"]
+shader = ExtResource("4_blum4")
+shader_parameter/level1 = Color(0.211765, 0.176471, 0.231373, 1)
+shader_parameter/level2 = Color(1, 0.827451, 0.588235, 0.513726)
+shader_parameter/level3 = Color(1, 0.827451, 0.588235, 1)
+shader_parameter/level4 = Color(1, 1, 1, 1)
+shader_parameter/threshold1 = 0.201
+shader_parameter/threshold2 = 0.31
+shader_parameter/threshold3 = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gnibc"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jcquv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vvlxm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1bni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oi1gw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vn5mo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4w4no"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w6mid"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kcifw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xmlce"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vvlxm"]
+viewport_path = NodePath("StockMarket")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u2eve"]
+
+[node name="MainPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5lbjv")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+snap_2d_transforms_to_pixel = true
+anisotropic_filtering_level = 0
+canvas_item_default_texture_filter = 0
+size = Vector2i(500, 500)
+
+[node name="ShovelModel" parent="SubViewport" instance=ExtResource("2_jcquv")]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0, -3)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+current = true
+fov = 66.8484
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.03704)
+omni_range = 6.897
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport"]
+environment = SubResource("Environment_t00d2")
+
+[node name="Sprite3D" type="CSGBox3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+material_override = SubResource("ShaderMaterial_t00d2")
+flip_faces = true
+size = Vector3(7, 7, 7)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
+
+[node name="TextureRect" type="ColorRect" parent="SubViewport/CanvasLayer"]
+material = SubResource("ShaderMaterial_jcquv")
+custom_minimum_size = Vector2(500, 500)
+offset_right = 500.0
+offset_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Border" type="Sprite2D" parent="SubViewport/CanvasLayer"]
+texture = ExtResource("4_wqwo8")
+centered = false
+
+[node name="StockMarket" type="SubViewport" parent="."]
+canvas_item_default_texture_filter = 3
+size = Vector2i(250, 312)
+
+[node name="StockMarket" parent="StockMarket" instance=ExtResource("8_vvlxm")]
+
+[node name="PostsColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+color = Color(0.211765, 0.176471, 0.231373, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="ShovelText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_con45")
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1]SHOVEL"
+shortcut_keys_enabled = false
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TradeMark" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_con45")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1]TM"
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="ShovelSpinnin" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("ViewportTexture_gnibc")
+
+[node name="ProfileColor" type="ColorRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.0901961, 0.0705882, 0.054902, 1)
+
+[node name="StockMarket" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/ProfileColor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StocksButtons" type="ItemList" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/font = ExtResource("2_con45")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jcquv")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vvlxm")
+theme_override_styles/hovered = SubResource("StyleBoxEmpty_i1bni")
+theme_override_styles/hovered_selected = SubResource("StyleBoxEmpty_oi1gw")
+theme_override_styles/hovered_selected_focus = SubResource("StyleBoxEmpty_vn5mo")
+theme_override_styles/selected = SubResource("StyleBoxEmpty_4w4no")
+theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_w6mid")
+theme_override_styles/cursor_unfocused = SubResource("StyleBoxEmpty_kcifw")
+theme_override_styles/cursor = SubResource("StyleBoxEmpty_xmlce")
+allow_search = false
+max_columns = 4
+same_column_width = true
+
+[node name="StocksAndTextDivider" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("ViewportTexture_vvlxm")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StockDesc" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_con45")
+theme_override_font_sizes/normal_font_size = 18
+text = "Click a stock to show their description."
+
+[node name="StockPrice" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/table_h_separation = -4
+theme_override_fonts/normal_font = ExtResource("2_con45")
+theme_override_font_sizes/normal_font_size = 18
+text = "Click a stock to show their description."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonColors" type="ColorRect" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.211765, 0.176471, 0.231373, 1)
+
+[node name="Buttons" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer/ButtonColors"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Purchase" type="Button" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer/ButtonColors/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/font = ExtResource("2_con45")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u2eve")
+text = "Purchase"
+flat = true
+
+[node name="Sell" type="Button" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer/ButtonColors/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/font = ExtResource("2_con45")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_u2eve")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u2eve")
+text = "Sell"
+flat = true
+
+[node name="ScrollPage" type="ScrollContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="PostList" type="VBoxContainer" parent="HBoxContainer/ScrollPage"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LoadingWheel" type="Sprite2D" parent="HBoxContainer/ScrollPage"]
+position = Vector2(388, 512)
+texture = ExtResource("2_lc84y")
+
+[connection signal="draw" from="." to="." method="_draw"]
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksButtons" to="." method="_on_stocks_buttons_item_selected"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer/ButtonColors/Buttons/Purchase" to="." method="_on_purchase_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer/ButtonColors/Buttons/Sell" to="." method="_on_sell_pressed"]

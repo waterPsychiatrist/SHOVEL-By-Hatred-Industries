@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://o1vdexpthk7t"]
+
+[ext_resource type="Script" uid="uid://c067hwdef7r68" path="res://stock_market.gd" id="1_1ylu1"]
+[ext_resource type="Texture2D" uid="uid://7471ovpkvsh3" path="res://Graphics/WebsiteUI/stockmarketgird.png" id="2_1gcy7"]
+
+[node name="StockMarket" type="Control"]
+custom_minimum_size = Vector2(250, 312)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_1ylu1")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1gcy7")
+stretch_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

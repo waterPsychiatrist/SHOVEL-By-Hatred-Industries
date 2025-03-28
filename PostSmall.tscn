@@ -1,0 +1,157 @@
+[gd_scene load_steps=17 format=3 uid="uid://c5y6vravgdafi"]
+
+[ext_resource type="Script" uid="uid://de7dtkacux4lc" path="res://post_small.gd" id="1_5mfrn"]
+[ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="1_880f1"]
+[ext_resource type="Texture2D" uid="uid://s7e0nsocb2md" path="res://Graphics/WebsiteUI/Digs.png" id="3_5mfrn"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_76b4k"]
+content_margin_right = 12.0
+color = Color(0.211765, 0.176471, 0.231373, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 10
+vertical = true
+
+[sub_resource type="Theme" id="Theme_5mfrn"]
+default_font = ExtResource("1_880f1")
+default_font_size = 25
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5mfrn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_obbas"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_12jyy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ewqkq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqoig"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5nxx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ihwrb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nkra0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jajy6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edmhm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cqa23"]
+
+[node name="PostSmall" type="Control"]
+custom_minimum_size = Vector2(780, 150)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5mfrn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.176471, 0.231373, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.0901961, 0.0705882, 0.054902, 1)
+
+[node name="ImageAndTextSeperator" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ImageAndTextSeperator"]
+custom_minimum_size = Vector2(20, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_76b4k")
+
+[node name="Text" type="VBoxContainer" parent="MarginContainer/ImageAndTextSeperator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/ImageAndTextSeperator/Text"]
+texture_filter = 3
+texture_repeat = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("1_880f1")
+theme_override_fonts/mono_font = ExtResource("1_880f1")
+theme_override_fonts/italics_font = ExtResource("1_880f1")
+theme_override_fonts/bold_italics_font = ExtResource("1_880f1")
+theme_override_fonts/bold_font = ExtResource("1_880f1")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "\"WIZARD MAGIC\" Bio-slave says. \"WIZARD MAGIC\" Bio-slave says."
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="DigsAndRabbithole" type="HBoxContainer" parent="MarginContainer/ImageAndTextSeperator/Text"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole"]
+layout_mode = 2
+texture = ExtResource("3_5mfrn")
+
+[node name="Digs" type="RichTextLabel" parent="MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole"]
+custom_minimum_size = Vector2(62, 62)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("1_880f1")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = " [shake rate=10.0 level=4connected=1]30000"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="RabbitHole" type="RichTextLabel" parent="MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole"]
+texture_filter = 3
+texture_repeat = 2
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_5mfrn")
+theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
+bbcode_enabled = true
+text = "[wave amp=25.	0 freq=5.0 connected=1]mall://shovel.politics.net"
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5mfrn")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_obbas")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_12jyy")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ewqkq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_bqoig")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_m5nxx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ihwrb")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_nkra0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jajy6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_edmhm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cqa23")
+flat = true
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]
