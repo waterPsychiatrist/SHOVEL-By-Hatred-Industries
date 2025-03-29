@@ -34,7 +34,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/easy_remap/plugin.cfg", "res://addons/input_helper/plugin.cfg")
+enabled=PackedStringArray("res://addons/input_helper/plugin.cfg")
 
 [gui]
 

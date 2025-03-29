@@ -47,6 +47,6 @@ func _ready() -> void:
 		var playerPFP = ImageTexture.create_from_image(image)
 		$MarginContainer/ImageAndTextSeperator/ProfilePicture.texture = playerPFP
 		
-		$MarginContainer/ImageAndTextSeperator/Text/Comment.text = Global.myReplies.keys()[-1]
+		$MarginContainer/ImageAndTextSeperator/Text/Comment.text = Global.myReplies.keys()[-1].erase(0, 23)
 		$MarginContainer/ImageAndTextSeperator/Text/Username.text = Global.username
 		

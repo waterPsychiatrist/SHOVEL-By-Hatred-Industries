@@ -23,8 +23,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_text_newline"):
-		Global.myReplies.assign({$ReplyBox/MarginContainer/ImageAndTextSeperator/ScrollContainer/Text/TextEdit.text : Global.CurrentPost})
+	if Input.is_action_just_pressed("ui_text_newline") && $ReplyBox/MarginContainer/ImageAndTextSeperator/ScrollContainer/Text/TextEdit.text.replacen(" ", "") != "":
+		var currentTime = Time.get_datetime_string_from_system().replace("T", " | ")
+		Global.myReplies.merge({currentTime + ": " + $ReplyBox/MarginContainer/ImageAndTextSeperator/ScrollContainer/Text/TextEdit.text : Global.CurrentPost})
 		$ReplyBox/MarginContainer/ImageAndTextSeperator/ScrollContainer/Text/TextEdit.clear()
 		var commentInst = comment.instantiate()
 		commentInst.name = "PlayerReply"

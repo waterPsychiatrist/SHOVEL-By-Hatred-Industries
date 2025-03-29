@@ -106,7 +106,7 @@ func makePost():
 			digs = randi_range(501, 1500) * opinion
 	
 	#getRabbitHole()
-	postRabbitHole = Global.randomizeString(Global.getFromTXTFile("rabbitholes"), false).to_lower()
+	postRabbitHole = Global.randomizeString(Global.getFromTXTFile("rabbitholes"), false, true).to_lower()
 	#getTitle()
 	postTitle = Global.randomizeString(Global.getFromTXTFile("titles"), true)
 	$MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole/Digs.text = " [shake rate=10.0 level=" + str(postPopularity)+ " connected=1]" + str(digs)
@@ -131,8 +131,11 @@ func _on_button_pressed() -> void:
 	window = Window.new()
 	window.visible = false
 	window.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN 
-	window.size = Vector2(500, 500)
+	window.size = Vector2(1280, 1024)
 	window.title = postTitle
+	window.content_scale_mode = 2
+	window.content_scale_aspect = 1
+	window.content_scale_size = window.size
 	window.close_requested.connect(_on_window_close_requested)
 	add_child(window)
 	if window.get_child_count() == 0:

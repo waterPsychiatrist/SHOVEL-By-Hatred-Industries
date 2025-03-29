@@ -21,6 +21,7 @@ var myPosts : Dictionary  = {}
 var myReplies : Dictionary  = {}
 var myDMs : Dictionary = {}
 var myMoney : int = 600
+var profileDesc : String = "A new shoveler scurrying about!"
 
 #Settings
 var howManyPostsPerPage : int = 60
@@ -98,75 +99,8 @@ func getFromTXTFile(whatFile : String) -> String:
 	var textFileContents : Array = contents.split("\n", true)
 	return textFileContents.pick_random()
 	
-func getNoun():
-	var file = "user://nouns.txt"
-	var list = FileAccess.open(file, FileAccess.READ)
-	var rng = RandomNumberGenerator.new()
-	
-	while not list.eof_reached():
-		
-		noun = str(list.get_line().to_lower())
-		if rng.randi() % 10 == 0:
-			return
-	list.close()
-	
-func getPoliticalParty():
-	var file = "user://politicalparties.txt"
-	var list = FileAccess.open(file, FileAccess.READ)
-	var rng = RandomNumberGenerator.new()
-	
-	while not list.eof_reached():
-		
-		politicalParty = str(list.get_line())
-		if rng.randi() % 10 == 0:
-			return
-	list.close()
-func getPerson():
-	var file = "user://people.txt"
-	var list = FileAccess.open(file, FileAccess.READ)
-	var rng = RandomNumberGenerator.new()
-	
-	while not list.eof_reached():
-		
-		person = str(list.get_line())
-		if rng.randi() % 10 == 0:
-			return
-	list.close()
-func getStocks():
-	var file = "user://stocks.txt"
-	var list = FileAccess.open(file, FileAccess.READ)
-	var rng = RandomNumberGenerator.new()
-	
-	while not list.eof_reached():
-		
-		stock = str(list.get_line())
-		if rng.randi() % 10 == 0:
-			return
-	list.close()
-func getVerb():
-	var file = "user://verbs.txt"
-	var list = FileAccess.open(file, FileAccess.READ)
-	var rng = RandomNumberGenerator.new()
-	
-	while not list.eof_reached():
-		
-		verb = str(list.get_line())
-		if rng.randi() % 10 == 0:
-			return
-	list.close()
-func getRabbitHole():
-	var file = "user://rabbitholes.txt"
-	var list = FileAccess.open(file, FileAccess.READ)
-	var rng = RandomNumberGenerator.new()
-	
-	while not list.eof_reached():
-		rabbithole = str(list.get_line().to_lower())
-		if rng.randi() % 10 == 0:
-			return
-	list.close()
 
-
-func randomizeString(rstr : String, letterCase) -> String:
+func randomizeString(rstr : String, letterCase : bool, eraseSpaces : bool = false) -> String:
 	if rstr.is_empty() == false:
 		if "/noun/" in rstr:
 			rstr = rstr.replacen("/noun/", getFromTXTFile("nouns"))
@@ -183,7 +117,7 @@ func randomizeString(rstr : String, letterCase) -> String:
 		if "/memeclickedbottom/" in rstr:
 			rstr = rstr.replacen("/memeclickedbottom/", Global.CurrentPost[3])
 		if "/rabbithole/" in rstr:
-			rstr = rstr.replacen("/rabbithole/", getFromTXTFile("rabbitholes"))
+			rstr = rstr.replacen("/rabbithole/", getFromTXTFile("rabbitholes").replacen(" ", ""))
 		if "/number/" in rstr:
 			rstr = rstr.replacen("/number/", str(randi_range(0, 9)))
 		if "/number2/" in rstr:
@@ -203,7 +137,8 @@ func randomizeString(rstr : String, letterCase) -> String:
 					rstr = rstr.capitalize()
 				6:
 					rstr = rstr.to_upper()
-		
+		if eraseSpaces == true:
+			rstr.replacen(" ", "")
 		return rstr
 	else:
 		return "YOU FUCKED UP"

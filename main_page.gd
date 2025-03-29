@@ -35,9 +35,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("OpenUASWindow"):
 		createUserAndSettingsWindow()
 
-func _on_stocks_timer_timeout() -> void:
-	pass # Replace with function body.
-
 
 func _on_stocks_buttons_item_selected(index: int) -> void:
 	$HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer/StockDesc.text = Global.stockmarkets[$HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksButtons.get_item_text(index)][0] + "\n" + "DESCRIPTION: " + Global.stockmarkets[$HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksButtons.get_item_text(index)][1]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp7l3el21g5bh"]
+[gd_scene load_steps=8 format=3 uid="uid://cp7l3el21g5bh"]
 
 [ext_resource type="Script" uid="uid://dan1ed7bli3or" path="res://user_and_settings.gd" id="1_0pqhk"]
 [ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="1_1s2ti"]
@@ -10,6 +10,8 @@ default_font = ExtResource("1_1s2ti")
 default_font_size = 25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ctvt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pqhk"]
 
 [node name="UserAndSettings" type="Control"]
 layout_mode = 3
@@ -184,7 +186,7 @@ theme_override_fonts/font = ExtResource("1_1s2ti")
 theme_override_font_sizes/font_size = 18
 text = "Reload PFP"
 
-[node name="MyReplies" type="RichTextLabel" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer"]
+[node name="MyRepliesText" type="RichTextLabel" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -198,6 +200,76 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 vertical_alignment = 1
+
+[node name="MyReplies" type="VBoxContainer" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ProfileDescText" type="RichTextLabel" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/normal_font = ExtResource("1_1s2ti")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Profile Description: [color=#ffffff]
+[font_size=18]\"Who the hell are you? Did you put me here?
+Can you spare a blanket or a cigarette? See, I lost my coat in a football bet
+You know, I used to be a pitcher back in the Georgia summer
+Did I tell you about how I threw out my arm? I remember Atlanta.\" - Henry Turner"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+color = Color(0.211765, 0.176471, 0.231373, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/ColorRect2"]
+layout_mode = 2
+offset_right = 582.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0pqhk")
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/ColorRect2/MarginContainer"]
+layout_mode = 2
+color = Color(0.0901961, 0.0705882, 0.054902, 1)
+
+[node name="ProfileDescTextEdit" type="TextEdit" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/ColorRect2/MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = ExtResource("2_0pqhk")
+theme_override_fonts/font = ExtResource("1_1s2ti")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0pqhk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0pqhk")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_0pqhk")
+placeholder_text = "Write your profile's description here."
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+wrap_mode = 1
+caret_blink = true
+
+[node name="UpdateProfileDesc" type="Button" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer"]
+custom_minimum_size = Vector2(291, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("2_0pqhk")
+theme_override_colors/font_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/font = ExtResource("1_1s2ti")
+theme_override_font_sizes/font_size = 18
+text = "Update Profile Description"
 
 [node name="Settings" type="ScrollContainer" parent="MarginContainer/PageVBox/HBoxContainer"]
 z_index = 4
@@ -284,6 +356,7 @@ theme_override_font_sizes/font_size = 18
 text = "Reload Randomizer Files"
 
 [connection signal="pressed" from="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/PFPReload" to="." method="_on_pfp_reload_pressed"]
+[connection signal="pressed" from="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/UpdateProfileDesc" to="." method="_on_update_profile_desc_pressed"]
 [connection signal="value_changed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/AmmountSlider" to="." method="_on_ammount_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/StockChangeSlider" to="." method="_on_stock_change_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/RandomizerFilesButton" to="." method="_on_randomizer_files_button_pressed"]
