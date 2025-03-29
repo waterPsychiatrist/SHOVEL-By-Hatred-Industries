@@ -23,6 +23,7 @@ config/icon="uid://s7e0nsocb2md"
 
 Global="*res://global.gd"
 SaveDataManager="*res://savedatamanager.gd"
+InputHelper="*res://addons/input_helper/input_helper.gd"
 
 [display]
 
@@ -30,6 +31,27 @@ window/size/viewport_width=1280
 window/size/viewport_height=1024
 window/subwindows/embed_subwindows=false
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/easy_remap/plugin.cfg", "res://addons/input_helper/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://cl0xamvx33oue"
+
+[input]
+
+ReloadMainPage={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194317,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+OpenUASWindow={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [rendering]
 

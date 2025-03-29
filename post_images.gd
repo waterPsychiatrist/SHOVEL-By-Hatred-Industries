@@ -8,7 +8,7 @@ var memeColor : Color = Color(Color.WHITE)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if isBeingRandomlyMade == true:
-		meme = randi_range(1, 20)
+		meme = randi_range(1, 21)
 		$Meme.texture = load("res://Graphics/Images/Memes/" + str(meme) + ".png")
 		getText(1)
 		getText(2)

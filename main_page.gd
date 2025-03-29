@@ -27,11 +27,13 @@ func _process(_delta: float) -> void:
 			$HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksButtons.add_item(str(key), null, true)
 			currentStocksShown += 1
 	
-	if Input.is_action_just_pressed("ui_home"):
+	if Input.is_action_just_pressed("ReloadMainPage"):
 		for n in $HBoxContainer/ScrollPage/PostList.get_children():
 			$HBoxContainer/ScrollPage/PostList.remove_child(n)
 			n.queue_free() 
 		currentPosts = 0
+	if Input.is_action_just_pressed("OpenUASWindow"):
+		createUserAndSettingsWindow()
 
 func _on_stocks_timer_timeout() -> void:
 	pass # Replace with function body.
@@ -52,3 +54,9 @@ func _on_sell_pressed() -> void:
 	if Global.stockmarkets[Global.currentStockSelected][8] > 0:
 		Global.myMoney += Global.stockmarkets[Global.currentStockSelected][2]
 		Global.stockmarkets[Global.currentStockSelected][8] -= 1
+
+func createUserAndSettingsWindow() -> void:
+	$Window.visible = true
+	
+func _on_window_close_requested() -> void:
+	$Window.visible = false

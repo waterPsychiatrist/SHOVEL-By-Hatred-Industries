@@ -1,0 +1,290 @@
+[gd_scene load_steps=7 format=3 uid="uid://cp7l3el21g5bh"]
+
+[ext_resource type="Script" uid="uid://dan1ed7bli3or" path="res://user_and_settings.gd" id="1_0pqhk"]
+[ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="1_1s2ti"]
+[ext_resource type="Theme" uid="uid://cl0xamvx33oue" path="res://scrollDefault.tres" id="2_0pqhk"]
+[ext_resource type="Texture2D" uid="uid://dcktvi8x7514c" path="res://Graphics/Images/ProfilePictures/1.png" id="4_0pqhk"]
+
+[sub_resource type="Theme" id="Theme_47wbw"]
+default_font = ExtResource("1_1s2ti")
+default_font_size = 25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ctvt"]
+
+[node name="UserAndSettings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0pqhk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.211765, 0.176471, 0.231373, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="RichTextLabel" parent="CanvasLayer/Control"]
+texture_filter = 3
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("1_1s2ti")
+theme_override_fonts/mono_font = ExtResource("1_1s2ti")
+theme_override_fonts/italics_font = ExtResource("1_1s2ti")
+theme_override_fonts/bold_italics_font = ExtResource("1_1s2ti")
+theme_override_fonts/bold_font = ExtResource("1_1s2ti")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "User profile & settings."
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="RabbitHole" type="RichTextLabel" parent="CanvasLayer/Control"]
+texture_filter = 3
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme = SubResource("Theme_47wbw")
+bbcode_enabled = true
+text = "[wave amp=25.	0 freq=5.0 connected=1]Closing this window saves your progress."
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 45
+theme_override_constants/margin_bottom = 45
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0.0901961, 0.0705882, 0.054902, 1)
+
+[node name="PageVBox" type="VBoxContainer" parent="MarginContainer" groups=["PageContainer"]]
+custom_minimum_size = Vector2(1190, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="SerenityPrayer" type="RichTextLabel" parent="MarginContainer/PageVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/normal_font = ExtResource("1_1s2ti")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "
+The Serenety Prayer:
+ [wave amp=25.	0 freq=5.0 connected=1] [font_size=18] [color=#ffffff]
+“GOD grant me the serenity to accept the things I cannot change, courage to change the things I can, and wisdom to know the difference.”
+ "
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PageVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="UserProfile" type="ScrollContainer" parent="MarginContainer/PageVBox/HBoxContainer"]
+z_index = 4
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0pqhk")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PFPText" type="RichTextLabel" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/normal_font = ExtResource("1_1s2ti")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Current PFP:
+[color=#ffffff][font_size=18]The picture displayed next to your comments and other posts made by you."
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 3
+vertical_alignment = 1
+justification_flags = 35
+
+[node name="ProfilePicture" type="TextureRect" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer"]
+material = SubResource("ShaderMaterial_1ctvt")
+custom_minimum_size = Vector2(291, 291)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_0pqhk")
+texture = ExtResource("4_0pqhk")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="PFPReload" type="Button" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer"]
+custom_minimum_size = Vector2(291, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0pqhk")
+theme_override_colors/font_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/font = ExtResource("1_1s2ti")
+theme_override_font_sizes/font_size = 18
+text = "Reload PFP"
+
+[node name="MyReplies" type="RichTextLabel" parent="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/normal_font = ExtResource("1_1s2ti")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Replies: [color=#ffffff]??
+[font_size=18]You're thoughts spread out on the cutting board for all to see."
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="Settings" type="ScrollContainer" parent="MarginContainer/PageVBox/HBoxContainer"]
+z_index = 4
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0pqhk")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PageVBox/HBoxContainer/Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AmmoutOfPostsText" type="RichTextLabel" parent="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/normal_font = ExtResource("1_1s2ti")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Ammount of posts per load: [color=#ffffff]60
+[font_size=18]The number of posts rendered per refresh."
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="AmmountSlider" type="HSlider" parent="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0pqhk")
+min_value = 10.0
+value = 60.0
+
+[node name="StockChangeRate" type="RichTextLabel" parent="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/normal_font = ExtResource("1_1s2ti")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Market Flucuation Time: [color=#ffffff]1.5s
+[font_size=18]How much time passes for the market to fluctuate, or, for the line to go up or down."
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="StockChangeSlider" type="HSlider" parent="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0pqhk")
+min_value = 0.5
+max_value = 10.0
+step = 0.1
+value = 1.5
+
+[node name="TXTFiles" type="VBoxContainer" parent="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_0pqhk")
+
+[node name="RandomizerFilesButton" type="Button" parent="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(291, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("2_0pqhk")
+theme_override_colors/font_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/font = ExtResource("1_1s2ti")
+theme_override_font_sizes/font_size = 18
+text = "Open Randomizer Files Directory"
+
+[node name="RandomizerFilesReload" type="Button" parent="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(291, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0pqhk")
+theme_override_colors/font_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/font = ExtResource("1_1s2ti")
+theme_override_font_sizes/font_size = 18
+text = "Reload Randomizer Files"
+
+[connection signal="pressed" from="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/PFPReload" to="." method="_on_pfp_reload_pressed"]
+[connection signal="value_changed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/AmmountSlider" to="." method="_on_ammount_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/StockChangeSlider" to="." method="_on_stock_change_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/RandomizerFilesButton" to="." method="_on_randomizer_files_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/RandomizerFilesReload" to="." method="_on_randomizer_files_reload_pressed"]

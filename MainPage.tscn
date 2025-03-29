@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bnxq7ic64m576"]
+[gd_scene load_steps=27 format=3 uid="uid://bnxq7ic64m576"]
 
 [ext_resource type="Script" uid="uid://ekh72aw1cr5y" path="res://main_page.gd" id="1_5lbjv"]
 [ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="2_con45"]
@@ -9,6 +9,8 @@
 [ext_resource type="Shader" uid="uid://bjj1e0axkqpkp" path="res://Posterization.gdshader" id="4_blum4"]
 [ext_resource type="Texture2D" uid="uid://dn7hura2au15w" path="res://Graphics/WebsiteUI/Margins.png" id="4_wqwo8"]
 [ext_resource type="PackedScene" uid="uid://o1vdexpthk7t" path="res://stock_market.tscn" id="8_vvlxm"]
+[ext_resource type="Theme" uid="uid://cl0xamvx33oue" path="res://scrollDefault.tres" id="9_i1bni"]
+[ext_resource type="PackedScene" uid="uid://cp7l3el21g5bh" path="res://user_and_settings.tscn" id="11_oi1gw"]
 
 [sub_resource type="Environment" id="Environment_t00d2"]
 background_mode = 1
@@ -213,6 +215,7 @@ texture = SubResource("ViewportTexture_vvlxm")
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9_i1bni")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer"]
 layout_mode = 2
@@ -225,7 +228,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("2_con45")
 theme_override_font_sizes/normal_font_size = 18
-text = "Click a stock to show their description."
+text = "Universal Fund
+DESCRIPTION: The ammount of funds supplied to every citezen at the end of the month."
 
 [node name="StockPrice" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -299,6 +303,7 @@ flat = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("9_i1bni")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
@@ -312,7 +317,19 @@ size_flags_vertical = 3
 position = Vector2(388, 512)
 texture = ExtResource("2_lc84y")
 
-[connection signal="draw" from="." to="." method="_draw"]
+[node name="Window" type="Window" parent="."]
+canvas_item_default_texture_filter = 0
+title = "User Profile & Settings Tab"
+initial_position = 1
+size = Vector2i(1280, 1024)
+visible = false
+always_on_top = true
+content_scale_mode = 2
+content_scale_aspect = 1
+
+[node name="UserAndSettings" parent="Window" instance=ExtResource("11_oi1gw")]
+
 [connection signal="item_selected" from="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksButtons" to="." method="_on_stocks_buttons_item_selected"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer/ButtonColors/Buttons/Purchase" to="." method="_on_purchase_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ProfileColor/StockMarket/StocksAndTextDivider/ScrollContainer/VBoxContainer/ButtonColors/Buttons/Sell" to="." method="_on_sell_pressed"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

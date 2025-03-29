@@ -29,7 +29,7 @@ func loadSave():
 		Global.username = storedData["Username"]
 		Global.password = storedData["Password"]
 		Global.myPosts = storedData["MyPosts"]
-		Global.myReplies = storedData[""]
+		Global.myReplies = storedData["MyReplies"]
 		Global.myDMs = storedData["MyDMs"]
 		Global.myMoney = storedData["MyMoney"]
 		Global.howManyPostsPerPage = storedData["HowManyPostsPerPage"]
@@ -45,6 +45,7 @@ func checkPassword(username, passwordWritten):
 			return true
 		else: 
 			return false
+		
 	else:
 		print("ThatDontExistMF")
 	

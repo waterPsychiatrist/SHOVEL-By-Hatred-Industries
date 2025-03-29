@@ -37,9 +37,9 @@ func _ready() -> void:
 			opinion = "negative"
 		
 		#Comment Randomize
-		getComment()
+		commentText = Global.randomizeString(Global.getFromTXTFile("comments" + str(opinion)), true)
 		$MarginContainer/ImageAndTextSeperator/Text/Comment.text = Global.randomizeString(commentText, true)
-		getUser()
+		username = Global.randomizeString(Global.getFromTXTFile("usernames"), true)
 		$MarginContainer/ImageAndTextSeperator/Text/Username.text = Global.randomizeString(username, false).to_lower().replacen(" ", "")
 	else:
 		#var playerPFP = ImageTexture.create_from_image("user://images/pfp.png")
@@ -50,25 +50,3 @@ func _ready() -> void:
 		$MarginContainer/ImageAndTextSeperator/Text/Comment.text = Global.myReplies.keys()[-1]
 		$MarginContainer/ImageAndTextSeperator/Text/Username.text = Global.username
 		
-
-func getComment():
-	var file = "user://comments" + opinion + ".txt"
-	var list = FileAccess.open(file, FileAccess.READ)
-	var rng = RandomNumberGenerator.new()
-	
-	while not list.eof_reached():
-		
-		commentText = str(list.get_line())
-		if rng.randi() % 10 == 0:
-			return
-func getUser():
-	var file = "user://usernames.txt"
-	var list = FileAccess.open(file, FileAccess.READ)
-	var rng = RandomNumberGenerator.new()
-	
-	while not list.eof_reached():
-		
-		username = str(list.get_line())
-		if rng.randi() % 10 == 0:
-			return
-	

@@ -6,6 +6,7 @@ var gehef = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	howManyFuckingTimes = Global.stockmarkets.size()
+	$StocksTimer.wait_time = Global.stocksChangeTime
 	$StocksTimer.timeout.connect(timedStocks)
 	for key in Global.stockmarkets:
 		Global.stockmarkets[Global.currentStockSelected][6] = Global.stockmarkets[Global.currentStockSelected][2] * 1.2
@@ -28,6 +29,9 @@ func _process(_delta: float) -> void:
 		zoom += 0.2
 	if Input.is_action_just_pressed("ui_page_down"):
 		zoom -= 0.2
+		
+	if Global.stocksChangeTime != $StocksTimer.wait_time:
+		$StocksTimer.wait_time = Global.stocksChangeTime
 
 func drawLineStocks(point1, point2):
 	var colorOfCurrentLine = Color(Color.WHITE)

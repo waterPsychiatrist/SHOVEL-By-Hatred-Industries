@@ -18,8 +18,11 @@ func _process(delta: float) -> void:
 		if loadProgress[0] == 1:
 			var packedScene = ResourceLoader.load_threaded_get(mainPageScene)
 			get_tree().change_scene_to_packed(packedScene)
+			
+			
 func _on_log_in_pressed() -> void:
-		if usernameBox.text.replacen(" ", "") != "" && passwordBox.text.replacen(" ", "") != "":
+		if usernameBox.text.replacen(" ", "") != "" && passwordBox.text != "":
+			Global.username = $PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/UMargin/UsernameTextEdit.text.replacen(" ", "")
 			print(usernameBox.text.replacen(" ", "") + " / " + passwordBox.text)
 			if SaveDataManager.checkPassword(usernameBox.text.replacen(" ", ""), passwordBox.text) == true:
 				SaveDataManager.loadSave()
@@ -31,6 +34,7 @@ func _on_log_in_pressed() -> void:
 func _on_sign_up_pressed() -> void:
 	if usernameBox.text.replacen(" ", "") != "" && passwordBox.text.replacen(" ", "") != "":
 		Global.username = $PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/UMargin/UsernameTextEdit.text.replacen(" ", "")
+		Global.password = $PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/PMargin/PasswordTextEdit.text
 		SaveDataManager.save()
 		goToMain = true
 	else:

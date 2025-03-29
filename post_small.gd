@@ -62,30 +62,6 @@ func getPerson():
 		if rng.randi() % 10 == 0:
 			return
 		
-func randomizeTitle():
-	
-	if "/noun/" in postTitle:
-		getNoun()
-		postTitle = postTitle.replacen("/noun/", noun)
-	if "/pp/" in postTitle:
-		getPoliticalParty()
-		postTitle = postTitle.replacen("/pp/", politicalParty)
-	if "/people/" in postTitle:
-		getPerson()
-		postTitle = postTitle.replacen("/people/", person)
-	
-	
-	var letterStatus = randi_range(1, 6)
-	match letterStatus:
-		1:
-			postTitle = postTitle.to_lower()
-		4:
-			postTitle = postTitle.to_camel_case()
-		5:
-			postTitle = postTitle.capitalize()
-		6:
-			postTitle = postTitle.to_upper()
-			
 func getRabbitHole():
 	var file = "user://rabbitholes.txt"
 	var list = FileAccess.open(file, FileAccess.READ)
@@ -129,13 +105,13 @@ func makePost():
 		5:
 			digs = randi_range(501, 1500) * opinion
 	
-	getRabbitHole()
-	randomizeRabbitHole()
-	getTitle()
-	randomizeTitle()
+	#getRabbitHole()
+	postRabbitHole = Global.randomizeString(Global.getFromTXTFile("rabbitholes"), false).to_lower()
+	#getTitle()
+	postTitle = Global.randomizeString(Global.getFromTXTFile("titles"), true)
 	$MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole/Digs.text = " [shake rate=10.0 level=" + str(postPopularity)+ " connected=1]" + str(digs)
 	$MarginContainer/ImageAndTextSeperator/Text/Title.text = postTitle
-	$MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole/RabbitHole.text = "[wave amp=25.0 freq=5.0 connected=1]mall://shovel." + postRabbitHole + ".net"
+	$MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole/RabbitHole.text = "[wave amp=25.0 freq=5.0 connected=1]mall://shovel." + postRabbitHole.to_lower().replacen(" ", "") + ".net"
 	
 
 
@@ -150,7 +126,8 @@ func _on_button_pressed() -> void:
 		postPopularity,
 		digs,
 		opinion,
-		$MarginContainer/ImageAndTextSeperator.get_node("Images").memeColor]
+		$MarginContainer/ImageAndTextSeperator.get_node("Images").memeColor
+		]
 	window = Window.new()
 	window.visible = false
 	window.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN 

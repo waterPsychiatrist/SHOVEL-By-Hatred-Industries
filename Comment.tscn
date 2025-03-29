@@ -148,10 +148,4 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_edmhm")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cqa23")
 flat = true
 
-[node name="Window" type="Window" parent="."]
-auto_translate_mode = 1
-initial_position = 1
-visible = false
-
 [connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

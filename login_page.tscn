@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dm6jmv67shkfe"]
+[gd_scene load_steps=19 format=3 uid="uid://dm6jmv67shkfe"]
 
 [ext_resource type="PackedScene" uid="uid://bxu1o3rd3regi" path="res://Models/shovel.glb" id="1_jlmyn"]
 [ext_resource type="Script" uid="uid://ch620k10fifnx" path="res://login_page.gd" id="1_wkk7v"]
@@ -7,6 +7,8 @@
 [ext_resource type="Shader" uid="uid://bjj1e0axkqpkp" path="res://Posterization.gdshader" id="4_wewh5"]
 [ext_resource type="Texture2D" uid="uid://dn7hura2au15w" path="res://Graphics/WebsiteUI/Margins.png" id="5_hi217"]
 [ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="6_8v3xk"]
+[ext_resource type="Texture2D" uid="uid://ctx610ar6rcia" path="res://Graphics/Images/Misc/ShovelFoundingPhoto.png" id="8_51wku"]
+[ext_resource type="Theme" uid="uid://cl0xamvx33oue" path="res://scrollDefault.tres" id="8_wewh5"]
 
 [sub_resource type="Environment" id="Environment_lw488"]
 background_mode = 1
@@ -175,6 +177,7 @@ shortcut_keys_enabled = false
 custom_minimum_size = Vector2(0, 883)
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("8_wewh5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PageAndShovelSeperator/PageContents/ScrollContainer"]
 clip_contents = true
@@ -329,7 +332,7 @@ theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
 theme_override_fonts/normal_font = ExtResource("6_8v3xk")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "No spaces on the username, preferably."
+text = "Enter your credentials."
 fit_content = true
 shortcut_keys_enabled = false
 horizontal_alignment = 2
@@ -342,9 +345,41 @@ theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
 theme_override_fonts/normal_font = ExtResource("6_8v3xk")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = " What is SHOVEL?:"
+text = " 
+ What is SHOVEL?:
+ "
 fit_content = true
 shortcut_keys_enabled = false
+
+[node name="MarginContainer" type="MarginContainer" parent="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="FoundingPicture" type="TextureRect" parent="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("8_51wku")
+stretch_mode = 2
+
+[node name="PictureDesc" type="RichTextLabel" parent="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/normal_font = ExtResource("6_8v3xk")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = " 
+[wave amp=25.	0 freq=5.0 connected=1]Pictured: Founding fathers of SHOVEL in the trenches developing the concept of speaking to people via the internet.
+ "
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 35
 
 [node name="ShovelDesc" type="RichTextLabel" parent="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer"]
 layout_mode = 2

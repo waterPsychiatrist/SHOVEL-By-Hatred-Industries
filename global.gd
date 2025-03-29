@@ -1,12 +1,30 @@
 extends Node
 
-var username = "pussySlayer6969"
-var password = "jamesbrown"
-var myPosts = {}
-var myReplies = {}
-var myDMs = {}
+var standardTXTs = [
+	"commentsnegative.txt", 
+	"commentspositive.txt", 
+	"memetoptext.txt", 
+	"memebottomtext.txt", 
+	"nouns.txt", 
+	"people.txt", 
+	"politicalparties.txt", 
+	"rabbitholes.txt",
+	"stocks.txt",
+	"titles.txt",
+	"usernames.txt",
+	"verbs.txt"
+]
+
+var username : String = "pussySlayer6969"
+var password : String = "jamesbrown"
+var myPosts : Dictionary  = {}
+var myReplies : Dictionary  = {}
+var myDMs : Dictionary = {}
 var myMoney : int = 600
-var howManyPostsPerPage = 60
+
+#Settings
+var howManyPostsPerPage : int = 60
+var stocksChangeTime : float = 1.5
 
 #Randomizer
 
@@ -73,6 +91,13 @@ var CurrentPost = [null, """"WIZARD MAGIC" Bio-slave says.""", "CEO MINDSET AFFE
 func _ready() -> void:
 	randomize()
 
+func getFromTXTFile(whatFile : String) -> String:
+	print(whatFile)
+	var file = FileAccess.open("user://" + whatFile + ".txt", FileAccess.READ)
+	var contents = file.get_as_text()
+	var textFileContents : Array = contents.split("\n", true)
+	return textFileContents.pick_random()
+	
 func getNoun():
 	var file = "user://nouns.txt"
 	var list = FileAccess.open(file, FileAccess.READ)
@@ -83,6 +108,7 @@ func getNoun():
 		noun = str(list.get_line().to_lower())
 		if rng.randi() % 10 == 0:
 			return
+	list.close()
 	
 func getPoliticalParty():
 	var file = "user://politicalparties.txt"
@@ -94,7 +120,7 @@ func getPoliticalParty():
 		politicalParty = str(list.get_line())
 		if rng.randi() % 10 == 0:
 			return
-			
+	list.close()
 func getPerson():
 	var file = "user://people.txt"
 	var list = FileAccess.open(file, FileAccess.READ)
@@ -105,7 +131,7 @@ func getPerson():
 		person = str(list.get_line())
 		if rng.randi() % 10 == 0:
 			return
-
+	list.close()
 func getStocks():
 	var file = "user://stocks.txt"
 	var list = FileAccess.open(file, FileAccess.READ)
@@ -116,7 +142,7 @@ func getStocks():
 		stock = str(list.get_line())
 		if rng.randi() % 10 == 0:
 			return
-			
+	list.close()
 func getVerb():
 	var file = "user://verbs.txt"
 	var list = FileAccess.open(file, FileAccess.READ)
@@ -127,7 +153,7 @@ func getVerb():
 		verb = str(list.get_line())
 		if rng.randi() % 10 == 0:
 			return
-			
+	list.close()
 func getRabbitHole():
 	var file = "user://rabbitholes.txt"
 	var list = FileAccess.open(file, FileAccess.READ)
@@ -137,38 +163,35 @@ func getRabbitHole():
 		rabbithole = str(list.get_line().to_lower())
 		if rng.randi() % 10 == 0:
 			return
-			
+	list.close()
 
 
 func randomizeString(rstr : String, letterCase) -> String:
 	if rstr.is_empty() == false:
 		if "/noun/" in rstr:
-			getNoun()
-			rstr = rstr.replacen("/noun/", noun)
+			rstr = rstr.replacen("/noun/", getFromTXTFile("nouns"))
 		if "/pp/" in rstr:
-			getPoliticalParty()
-			rstr = rstr.replacen("/pp/", politicalParty)
+			rstr = rstr.replacen("/pp/", getFromTXTFile("politicalparties"))
 		if "/people/" in rstr:
-			getPerson()
-			rstr = rstr.replacen("/people/", person)
+			rstr = rstr.replacen("/people/", getFromTXTFile("people"))
 		if "/stocks/" in rstr:
-			getStocks()
-			rstr = rstr.replacen("/stocks/", stock)
+			rstr = rstr.replacen("/stocks/", getFromTXTFile("stocks"))
 		if "/verb/" in rstr:
-			getVerb()
-			rstr = rstr.replacen("/verb/", verb)
+			rstr = rstr.replacen("/verb/", getFromTXTFile("verbs"))
 		if "/memeclickedtop/" in rstr:
 			rstr = rstr.replacen("/memeclickedtop/", Global.CurrentPost[2])
 		if "/memeclickedbottom/" in rstr:
 			rstr = rstr.replacen("/memeclickedbottom/", Global.CurrentPost[3])
 		if "/rabbithole/" in rstr:
-			rstr = rstr.replacen("/rabbithole/", rabbithole)
+			rstr = rstr.replacen("/rabbithole/", getFromTXTFile("rabbitholes"))
 		if "/number/" in rstr:
 			rstr = rstr.replacen("/number/", str(randi_range(0, 9)))
 		if "/number2/" in rstr:
 			rstr = rstr.replacen("/number2/", str(randi_range(10, 99)))
 		if "/number4/" in rstr:
 			rstr = rstr.replacen("/number4/", str(randi_range(1000, 9999)))
+		rstr = rstr.replacen("\n", "")
+		rstr = rstr.replacen("\r", "")
 		if letterCase:
 			var letterStatus = randi_range(1, 6)
 			match letterStatus:
