@@ -60,8 +60,8 @@ func getProfilePicture():
 		playerPFP = ImageTexture.create_from_image(image)
 	else:
 		image = load("res://Graphics/Images/ProfilePictures/1.png")
-		playerPFP = ImageTexture.create_from_image(image)
-		image.save_png("user://images/" + Global.username + ".png")
+		image.get_image().save_png("user://images/" + Global.username + ".png")
+		playerPFP = ImageTexture.create_from_image(Image.load_from_file("user://images/" + Global.username + ".png"))
 	return playerPFP
 
 func checkIfTXTsDoExist():
