@@ -8,7 +8,7 @@ var mainPageScene = "res://MainPage.tscn"
 func _ready() -> void:
 	srotspeed = Vector3(randf_range(0.1, 15), randf_range(0.1, 15), randf_range(0.1, 15))
 	ResourceLoader.load_threaded_request(mainPageScene)
-
+	SaveDataManager.checkIfTXTsDoExist()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$SubViewport/ShovelModel.rotation_degrees += srotspeed / 50
@@ -26,6 +26,7 @@ func _on_log_in_pressed() -> void:
 			print(usernameBox.text.replacen(" ", "") + " / " + passwordBox.text)
 			if SaveDataManager.checkPassword(usernameBox.text.replacen(" ", ""), passwordBox.text) == true:
 				SaveDataManager.loadSave()
+				await get_tree().create_timer(3).timeout
 				goToMain = true
 			else:
 				$PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/HelpText.text = "Password incorrect. Please try again."
@@ -36,6 +37,7 @@ func _on_sign_up_pressed() -> void:
 		Global.username = $PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/UMargin/UsernameTextEdit.text.replacen(" ", "")
 		Global.password = $PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/PMargin/PasswordTextEdit.text
 		SaveDataManager.save()
+		await get_tree().create_timer(3).timeout
 		goToMain = true
 	else:
 		$PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/HelpText.text = "Username / password cannot be empty."

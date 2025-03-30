@@ -43,9 +43,8 @@ func _ready() -> void:
 		$MarginContainer/ImageAndTextSeperator/Text/Username.text = Global.randomizeString(username, false).to_lower().replacen(" ", "")
 	else:
 		#var playerPFP = ImageTexture.create_from_image("user://images/pfp.png")
-		var image = Image.load_from_file("user://images/pfp.png")
-		var playerPFP = ImageTexture.create_from_image(image)
-		$MarginContainer/ImageAndTextSeperator/ProfilePicture.texture = playerPFP
+		
+		$MarginContainer/ImageAndTextSeperator/ProfilePicture.texture = SaveDataManager.getProfilePicture()
 		
 		$MarginContainer/ImageAndTextSeperator/Text/Comment.text = Global.myReplies.keys()[-1].erase(0, 23)
 		$MarginContainer/ImageAndTextSeperator/Text/Username.text = Global.username

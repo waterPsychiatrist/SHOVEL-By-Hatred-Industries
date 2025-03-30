@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://cl0xamvx33oue"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://cl0xamvx33oue"]
 
 [ext_resource type="Texture2D" uid="uid://cre1cilnafhv" path="res://Graphics/WebsiteUI/invisiboid.png" id="1_pqgx8"]
 [ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="1_r6rlr"]
@@ -46,6 +46,16 @@ border_width_top = 6
 border_width_right = 6
 border_width_bottom = 6
 border_color = Color(0.0901961, 0.0705882, 0.054902, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6rlr"]
+bg_color = Color(0.0901961, 0.0705882, 0.054902, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0901961, 0.0705882, 0.054902, 1)
+corner_detail = 1
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dplq"]
@@ -141,6 +151,8 @@ Button/styles/focus = SubResource("StyleBoxFlat_pbdli")
 Button/styles/hover = SubResource("StyleBoxFlat_878by")
 Button/styles/normal = SubResource("StyleBoxFlat_ueaqm")
 Button/styles/pressed = SubResource("StyleBoxFlat_2hfpk")
+HSeparator/constants/separation = 32
+HSeparator/styles/separator = SubResource("StyleBoxFlat_r6rlr")
 HSlider/constants/center_grabber = 0
 HSlider/constants/grabber_offset = 0
 HSlider/icons/grabber = ExtResource("1_pqgx8")

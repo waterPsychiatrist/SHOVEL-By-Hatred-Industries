@@ -99,7 +99,6 @@ theme_override_fonts/bold_font = ExtResource("1_880f1")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "\"WIZARD MAGIC\" Bio-slave says. \"WIZARD MAGIC\" Bio-slave says."
-fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 vertical_alignment = 1

@@ -43,6 +43,8 @@ func refreshReplyHistory():
 		wizard.custom_minimum_size = Vector2(582, 18)
 		wizard.scroll_active = false
 		wizard.clip_contents = true
+		wizard.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		wizard.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		$MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/MyReplies.add_child(wizard)
 
 
@@ -53,9 +55,7 @@ func _on_ammount_slider_value_changed(value: int) -> void:
 
 
 func _on_pfp_reload_pressed() -> void:
-	var image = Image.load_from_file("user://images/pfp.png")
-	var playerPFP = ImageTexture.create_from_image(image)
-	$MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/ProfilePicture.texture = playerPFP
+	$MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/ProfilePicture.texture = SaveDataManager.getProfilePicture()
 
 
 func _on_randomizer_files_button_pressed() -> void:
@@ -73,9 +73,7 @@ func _on_stock_change_slider_value_changed(value: float) -> void:
 	
 
 func restartStuff():
-	var image = Image.load_from_file("user://images/pfp.png")
-	var playerPFP = ImageTexture.create_from_image(image)
-	$MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/ProfilePicture.texture = playerPFP
+	$MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/ProfilePicture.texture = SaveDataManager.getProfilePicture()
 	refreshRandomizerFiles()
 	refreshReplyHistory()
 	$MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/AmmoutOfPostsText.text = "Ammount of posts per load: [color=#ffffff]" + str(Global.howManyPostsPerPage) + "\n" + "[font_size=18]The number of posts rendered per refresh."

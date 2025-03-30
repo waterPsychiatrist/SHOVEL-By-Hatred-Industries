@@ -210,6 +210,12 @@ shortcut_keys_enabled = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="---1" type="HSeparator" parent="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("8_wewh5")
+
 [node name="UserText" type="RichTextLabel" parent="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -336,6 +342,12 @@ text = "Enter your credentials."
 fit_content = true
 shortcut_keys_enabled = false
 horizontal_alignment = 2
+
+[node name="---2" type="HSeparator" parent="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("8_wewh5")
 
 [node name="WhatIsShovel" type="RichTextLabel" parent="PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer"]
 layout_mode = 2

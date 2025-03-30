@@ -10,10 +10,8 @@ func _ready() -> void:
 	if isBeingRandomlyMade == true:
 		meme = randi_range(1, 21)
 		$Meme.texture = load("res://Graphics/Images/Memes/" + str(meme) + ".png")
-		getText(1)
-		getText(2)
-		ttext = Global.randomizeString(ttext, false).to_upper()
-		btext = Global.randomizeString(btext, false).to_upper()
+		ttext = Global.randomizeString(Global.getFromTXTFile("memetoptext"), false).to_upper()
+		btext = Global.randomizeString(Global.getFromTXTFile("memebottomtext"), false).to_upper()
 		memeColor = Color(randf_range(0, 1), randf_range(0, 1), randf_range(0, 1), 1)
 
 	elif isBeingRandomlyMade == false:
@@ -28,19 +26,3 @@ func _ready() -> void:
 	#$TopText.texture = load("res://Graphics/Images/Memes/TopText/" + str(ttext) + ".png")
 	#$BottomText.texture = load("res://Graphics/Images/Memes/BottomText/" + str(btext) + ".png")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-
-func getText(bottomOrTop : int):    
-	if bottomOrTop == 1:
-		currentFile = "user://memetoptext.txt"
-	if bottomOrTop == 2:
-		currentFile = "user://memebottomtext.txt"
-	var list = FileAccess.open(currentFile, FileAccess.READ)
-	var rng = RandomNumberGenerator.new()
-
-	while not list.eof_reached():
-		if bottomOrTop == 1:
-			ttext = list.get_line()
-		if bottomOrTop == 2:
-			btext = list.get_line()
-		if rng.randi() % 10 == 0:
-			return

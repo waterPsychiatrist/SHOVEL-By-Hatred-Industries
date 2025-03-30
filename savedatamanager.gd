@@ -5,6 +5,9 @@ var storedData : Dictionary = {}
 func save():
 	if !DirAccess.dir_exists_absolute("user://saves"):
 		DirAccess.make_dir_absolute("user://saves")
+	if !DirAccess.dir_exists_absolute("user://images"):
+		DirAccess.make_dir_absolute("user://images")
+	
 	var file = FileAccess.open("user://" + "saves/" + Global.username + ".save", FileAccess.WRITE)
 	storedData = {
 		"StockMarketData" : Global.stockmarkets,
@@ -48,4 +51,31 @@ func checkPassword(username, passwordWritten):
 		
 	else:
 		print("ThatDontExistMF")
+
+func getProfilePicture():
+	var image 
+	var playerPFP
+	if FileAccess.file_exists("user://images/" + Global.username + ".png"):
+		image = Image.load_from_file("user://images/" + Global.username + ".png")
+		playerPFP = ImageTexture.create_from_image(image)
+	else:
+		image = Image.load_from_file("res://Graphics/Images/ProfilePictures/1.png")
+		playerPFP = ImageTexture.create_from_image(image)
+		image.save_png("user://images/" + Global.username + ".png")
+	return playerPFP
+
+func checkIfTXTsDoExist():
+	for txtfile in Global.standardTXTs:
+		if txtfile in DirAccess.get_files_at("user://"):
+			continue
+		else:
+			performTXTCreationWizardry(txtfile)
+
+func performTXTCreationWizardry(whichFile):
+	var file = FileAccess.open("res://StartupTextFiles/" + whichFile, FileAccess.READ)
+	var createdFile = FileAccess.open("user://" + whichFile, FileAccess.WRITE_READ)
+	print(file.get_as_text())
+	createdFile.store_string(file.get_as_text())
+	file.close()
+	createdFile.close()
 	
