@@ -35,6 +35,10 @@ var person : String = "Dean Winchester"
 var stock : String = "LORD"
 var verb : String = "copes"
 var rabbithole : String = "pornography"
+
+#randomizerfix
+
+var isAcceptDialogReal = false
 #stockmarkets = NAME : FULL NAME, 
 #DESCRIPTION, 
 #PRICE, 
@@ -95,10 +99,14 @@ func _ready() -> void:
 func getFromTXTFile(whatFile : String) -> String:
 	print(whatFile)
 	var file = FileAccess.open("user://" + whatFile + ".txt", FileAccess.READ)
-	var contents = file.get_as_text()
-	var textFileContents : Array = contents.split("\n", true)
-	return textFileContents.pick_random()
-	
+	if  file != null:
+		var contents = file.get_as_text()
+		var textFileContents : Array = contents.split("\n", true)
+		return textFileContents.pick_random()
+	else:
+		errorDialogPopup()
+		return "YOU FUCKED UP"
+
 
 func randomizeString(rstr : String, letterCase : bool, eraseSpaces : bool = false) -> String:
 	if rstr.is_empty() == false:
@@ -141,4 +149,17 @@ func randomizeString(rstr : String, letterCase : bool, eraseSpaces : bool = fals
 			rstr.replacen(" ", "")
 		return rstr
 	else:
+		errorDialogPopup()
 		return "YOU FUCKED UP"
+		
+		
+func errorDialogPopup():
+	if isAcceptDialogReal == false:
+		var errormsg = AcceptDialog.new()
+		errormsg.exclusive = true
+		errormsg.visible = true
+		errormsg.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN 
+		errormsg.dialog_text = "YOU FUCKED UP, EITHER A STRING IN THE TXTS IS BLANK OR YOU SHOULD INSTALL TXTS MANUALLY AND REOPEN THE PROGRAM"
+		get_node("/root/MainPage").add_child(errormsg)
+		isAcceptDialogReal = true
+		
