@@ -11,6 +11,8 @@ func _ready() -> void:
 	SaveDataManager.checkIfTXTsDoExist()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if $PageAndShovelSeperator/PageContents/ScrollContainer.visible == false:
+		$PageAndShovelSeperator/PageContents/VBoxContainer/LoadingWheel.rotation_degrees += 5 
 	$SubViewport/ShovelModel.rotation_degrees += srotspeed / 50
 	if goToMain == true:
 		var loadProgress = []
@@ -26,6 +28,7 @@ func _on_log_in_pressed() -> void:
 			print(usernameBox.text.replacen(" ", "") + " / " + passwordBox.text)
 			if SaveDataManager.checkPassword(usernameBox.text.replacen(" ", ""), passwordBox.text) == true:
 				SaveDataManager.loadSave()
+				beginLoading()
 				await get_tree().create_timer(3).timeout
 				goToMain = true
 			else:
@@ -37,6 +40,7 @@ func _on_sign_up_pressed() -> void:
 		Global.username = $PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/UMargin/UsernameTextEdit.text.replacen(" ", "")
 		Global.password = $PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/PMargin/PasswordTextEdit.text
 		SaveDataManager.save()
+		beginLoading()
 		await get_tree().create_timer(3).timeout
 		goToMain = true
 	else:
@@ -51,3 +55,7 @@ func _on_password_text_edit_editing_toggled(toggled_on: bool) -> void:
 func _on_username_text_edit_editing_toggled(toggled_on: bool) -> void:
 	if toggled_on == true:
 		$PageAndShovelSeperator/PageContents/ScrollContainer/VBoxContainer/HelpText.text = "No spaces on the username, preferably."
+
+func beginLoading():
+	$PageAndShovelSeperator/PageContents/ScrollContainer.visible = false
+	$PageAndShovelSeperator/PageContents/VBoxContainer.visible = true
