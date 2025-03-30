@@ -59,7 +59,7 @@ func getProfilePicture():
 		image = Image.load_from_file("user://images/" + Global.username + ".png")
 		playerPFP = ImageTexture.create_from_image(image)
 	else:
-		image = Image.load_from_file("res://Graphics/Images/ProfilePictures/1.png")
+		image = load("res://Graphics/Images/ProfilePictures/1.png")
 		playerPFP = ImageTexture.create_from_image(image)
 		image.save_png("user://images/" + Global.username + ".png")
 	return playerPFP

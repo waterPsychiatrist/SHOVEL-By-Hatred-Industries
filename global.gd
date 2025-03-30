@@ -102,13 +102,20 @@ func getFromTXTFile(whatFile : String) -> String:
 	if  file != null:
 		var contents = file.get_as_text()
 		var textFileContents : Array = contents.split("\n", true)
-		return textFileContents.pick_random()
+		var textFileContentGot = textFileContents.pick_random()
+		while textFileContentGot == "\n" or textFileContentGot ==  " " or textFileContentGot == "" or textFileContentGot == null:
+			textFileContentGot = textFileContents.pick_random()
+		return textFileContentGot
+		
 	else:
+		printerr("Some randomized string is causing issues")
 		errorDialogPopup()
 		return "YOU FUCKED UP"
 
 
 func randomizeString(rstr : String, letterCase : bool, eraseSpaces : bool = false) -> String:
+	rstr = rstr.replacen("\n", "")
+	rstr = rstr.replacen("\r", "")
 	if rstr.is_empty() == false:
 		if "/noun/" in rstr:
 			rstr = rstr.replacen("/noun/", getFromTXTFile("nouns"))
@@ -132,8 +139,6 @@ func randomizeString(rstr : String, letterCase : bool, eraseSpaces : bool = fals
 			rstr = rstr.replacen("/number2/", str(randi_range(10, 99)))
 		if "/number4/" in rstr:
 			rstr = rstr.replacen("/number4/", str(randi_range(1000, 9999)))
-		rstr = rstr.replacen("\n", "")
-		rstr = rstr.replacen("\r", "")
 		if letterCase:
 			var letterStatus = randi_range(1, 6)
 			match letterStatus:
@@ -147,8 +152,11 @@ func randomizeString(rstr : String, letterCase : bool, eraseSpaces : bool = fals
 					rstr = rstr.to_upper()
 		if eraseSpaces == true:
 			rstr.replacen(" ", "")
+		rstr = rstr.replacen("\n", "")
+		rstr = rstr.replacen("\r", "")
 		return rstr
 	else:
+		printerr("RandomizeString is causing errors.")
 		errorDialogPopup()
 		return "YOU FUCKED UP"
 		
