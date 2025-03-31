@@ -39,6 +39,7 @@ var rabbithole : String = "pornography"
 #randomizerfix
 
 var isAcceptDialogReal = false
+var areWeFucked = 0
 #stockmarkets = NAME : FULL NAME, 
 #DESCRIPTION, 
 #PRICE, 
@@ -103,8 +104,12 @@ func getFromTXTFile(whatFile : String) -> String:
 		var contents = file.get_as_text()
 		var textFileContents : Array = contents.split("\n", true)
 		var textFileContentGot = textFileContents.pick_random()
-		while textFileContentGot == "\n" or textFileContentGot ==  " " or textFileContentGot == "" or textFileContentGot == null:
+		while textFileContentGot == "\n" or textFileContentGot ==  " " or textFileContentGot == "" or textFileContentGot == null or textFileContentGot.replacen(" ", "") == "<null>":
 			textFileContentGot = textFileContents.pick_random()
+			areWeFucked += 1
+			if areWeFucked > 50:
+				errorDialogPopup()
+				return "YOU FUCKED UP"
 		return textFileContentGot
 		
 	else:
