@@ -40,7 +40,7 @@ func _ready() -> void:
 		commentText = Global.randomizeString(Global.getFromTXTFile("comments" + str(opinion)), true)
 		$MarginContainer/ImageAndTextSeperator/Text/Comment.text = Global.randomizeString(commentText, true)
 		username = Global.randomizeString(Global.getFromTXTFile("usernames"), true)
-		$MarginContainer/ImageAndTextSeperator/Text/Username.text = Global.randomizeString(username, false).to_lower().replacen(" ", "")
+		$MarginContainer/ImageAndTextSeperator/Text/Username.text = "[font_size=" + str(Global.textSize) + "]" + Global.randomizeString(username, false).to_lower().replacen(" ", "")
 	else:
 		#var playerPFP = ImageTexture.create_from_image("user://images/pfp.png")
 		
