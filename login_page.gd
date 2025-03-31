@@ -11,7 +11,7 @@ func _ready() -> void:
 	SaveDataManager.checkIfTXTsDoExist()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if $PageAndShovelSeperator/PageContents/ScrollContainer.visible == false:
 		$PageAndShovelSeperator/PageContents/VBoxContainer/LoadingWheel.rotation_degrees += 5 
 	$SubViewport/ShovelModel.rotation_degrees += srotspeed / 50

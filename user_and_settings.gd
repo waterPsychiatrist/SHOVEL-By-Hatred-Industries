@@ -85,7 +85,7 @@ func _on_update_profile_desc_pressed() -> void:
 	Global.profileDesc = $MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/ColorRect2/MarginContainer/ProfileDescTextEdit.text
 
 
-func _on_resolutions_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+func _on_resolutions_item_clicked(index: int, _at_position: Vector2, mouse_button_index: int) -> void:
 	if mouse_button_index == 1:
 		match index:
 			0:
