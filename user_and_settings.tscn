@@ -355,9 +355,64 @@ theme_override_fonts/font = ExtResource("1_1s2ti")
 theme_override_font_sizes/font_size = 18
 text = "Reload Randomizer Files"
 
+[node name="ResolutionText" type="RichTextLabel" parent="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/normal_font = ExtResource("1_1s2ti")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Resolution Sizes: [color=#ffffff]
+[font_size=18]You can drag the window corners to resize the window, but this affects all windows in the future."
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="Resolutions" type="ItemList" parent="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_0pqhk")
+allow_search = false
+auto_width = true
+auto_height = true
+item_count = 4
+max_columns = 4
+same_column_width = true
+item_0/text = "640x480"
+item_1/text = "800x600"
+item_2/text = "1024x768"
+item_3/text = "1280x1024"
+
+[node name="FontSizeText" type="RichTextLabel" parent="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(1, 0.827451, 0.588235, 1)
+theme_override_fonts/normal_font = ExtResource("1_1s2ti")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Font Size: [color=#ffffff]25px
+[font_size=18]Size of the post title font."
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
+
+[node name="FontSizeSlider" type="HSlider" parent="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_0pqhk")
+min_value = 1.0
+max_value = 40.0
+value = 11.0
+
 [connection signal="pressed" from="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/PFPReload" to="." method="_on_pfp_reload_pressed"]
 [connection signal="pressed" from="MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/UpdateProfileDesc" to="." method="_on_update_profile_desc_pressed"]
 [connection signal="value_changed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/AmmountSlider" to="." method="_on_ammount_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/StockChangeSlider" to="." method="_on_stock_change_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/RandomizerFilesButton" to="." method="_on_randomizer_files_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/RandomizerFilesReload" to="." method="_on_randomizer_files_reload_pressed"]
+[connection signal="item_clicked" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/Resolutions" to="." method="_on_resolutions_item_clicked"]
+[connection signal="value_changed" from="MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/FontSizeSlider" to="." method="_on_font_size_slider_value_changed"]

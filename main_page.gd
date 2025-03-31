@@ -7,6 +7,7 @@ var currentStocksShown = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	srotspeed = Vector3(randf_range(0.1, 15), randf_range(0.1, 15), randf_range(0.1, 15))
+	$Window.add_to_group("SubWindowNodes")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -53,6 +54,8 @@ func _on_sell_pressed() -> void:
 		Global.stockmarkets[Global.currentStockSelected][8] -= 1
 
 func createUserAndSettingsWindow() -> void:
+	$Window.size = SaveDataManager.storedData["WindowSize"]
+	$Window.content_scale_size = SaveDataManager.storedData["WindowSize"]
 	$Window.visible = true
 	
 func _on_window_close_requested() -> void:

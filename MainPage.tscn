@@ -228,6 +228,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("2_con45")
 theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
 text = "Universal Fund
 DESCRIPTION: The ammount of funds supplied to every citezen at the end of the month."
 
@@ -313,6 +315,49 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Controls" type="Control" parent="HBoxContainer/ScrollPage/PostList"]
+custom_minimum_size = Vector2(780, 150)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/ScrollPage/PostList/Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.176471, 0.231373, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ScrollPage/PostList/Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/ScrollPage/PostList/Controls/MarginContainer"]
+layout_mode = 2
+color = Color(0.0901961, 0.0705882, 0.054902, 1)
+
+[node name="Controls" type="RichTextLabel" parent="HBoxContainer/ScrollPage/PostList/Controls/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("2_con45")
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Use the Esc key to open User Profile/Settings and the \"\\\" key to refresh page.	"
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="LoadingWheel" type="Sprite2D" parent="HBoxContainer/ScrollPage"]
 position = Vector2(388, 512)
 texture = ExtResource("2_lc84y")
@@ -320,7 +365,7 @@ texture = ExtResource("2_lc84y")
 [node name="Window" type="Window" parent="."]
 canvas_item_default_texture_filter = 0
 title = "User Profile & Settings Tab"
-initial_position = 1
+initial_position = 2
 size = Vector2i(1280, 1024)
 visible = false
 content_scale_size = Vector2i(1280, 1024)

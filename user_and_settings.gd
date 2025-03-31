@@ -79,7 +79,29 @@ func restartStuff():
 	$MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/AmmoutOfPostsText.text = "Ammount of posts per load: [color=#ffffff]" + str(Global.howManyPostsPerPage) + "\n" + "[font_size=18]The number of posts rendered per refresh."
 	$MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/StockChangeRate.text = "Market Flucuation Time: [color=#ffffff]" + str(Global.stocksChangeTime) + "s\n" + "[font_size=18]How much time passes for the market to fluctuate, or, for the line to go up or down."
 	$MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/MyRepliesText.text = "Replies: [color=#ffffff]" + str(Global.myReplies.keys().size()) + "\n[font_size=18]Your thoughts spread out on the cutting board for all to see."
-
+	$MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/FontSizeText.text = "Font Size: [color=#ffffff]" + str(Global.textSize) + "px\n[font_size=18]Size of the post title font. Applies after page refesh."
 
 func _on_update_profile_desc_pressed() -> void:
 	Global.profileDesc = $MarginContainer/PageVBox/HBoxContainer/UserProfile/VBoxContainer/ColorRect2/MarginContainer/ProfileDescTextEdit.text
+
+
+func _on_resolutions_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	if mouse_button_index == 1:
+		match index:
+			0:
+				Global.windowSize = Vector2(640, 480)
+			1:
+				Global.windowSize = Vector2(800, 600)
+			2:
+				Global.windowSize = Vector2(1024, 768)
+			3:
+				Global.windowSize = Vector2(1280, 1024)
+	for windowNumb in range(get_tree().get_node_count_in_group("SubWindowNodes") + 1):
+		DisplayServer.window_set_position(Vector2i(1920 / 2, 1080 / 2), windowNumb)
+		DisplayServer.window_set_size(Global.windowSize, windowNumb)
+	
+
+
+func _on_font_size_slider_value_changed(value: float) -> void:
+	Global.textSize = value
+	$MarginContainer/PageVBox/HBoxContainer/Settings/VBoxContainer/FontSizeText.text = "Font Size: [color=#ffffff]" + str(Global.textSize) + "px\n[font_size=18]Size of the post title font. Applies after page refesh."

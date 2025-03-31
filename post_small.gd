@@ -43,7 +43,7 @@ func makePost():
 	#getTitle()
 	postTitle = Global.randomizeString(Global.getFromTXTFile("titles"), true)
 	$MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole/Digs.text = " [shake rate=10.0 level=" + str(postPopularity)+ " connected=1]" + str(digs)
-	$MarginContainer/ImageAndTextSeperator/Text/Title.text = postTitle
+	$MarginContainer/ImageAndTextSeperator/Text/Title.text = "[font_size=" + str(Global.textSize) + "]" + postTitle
 	$MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole/RabbitHole.text = "[wave amp=25.0 freq=5.0 connected=1]mall://shovel." + postRabbitHole.to_lower().replacen(" ", "") + ".net"
 	
 
@@ -68,8 +68,10 @@ func _on_button_pressed() -> void:
 	window.title = postTitle
 	window.content_scale_mode = 2
 	window.content_scale_aspect = 1
-	window.content_scale_size = window.size
+	window.size = Global.windowSize
+	window.content_scale_size = Global.windowSize
 	window.close_requested.connect(_on_window_close_requested)
+	window.add_to_group("SubWindowNodes")
 	add_child(window)
 	if window.get_child_count() == 0:
 		window.add_child(newPageInstance)

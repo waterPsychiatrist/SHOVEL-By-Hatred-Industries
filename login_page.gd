@@ -9,6 +9,7 @@ func _ready() -> void:
 	srotspeed = Vector3(randf_range(0.1, 15), randf_range(0.1, 15), randf_range(0.1, 15))
 	ResourceLoader.load_threaded_request(mainPageScene)
 	SaveDataManager.checkIfTXTsDoExist()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if $PageAndShovelSeperator/PageContents/ScrollContainer.visible == false:

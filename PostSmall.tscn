@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5y6vravgdafi"]
+[gd_scene load_steps=19 format=3 uid="uid://c5y6vravgdafi"]
 
 [ext_resource type="Script" uid="uid://de7dtkacux4lc" path="res://post_small.gd" id="1_5mfrn"]
 [ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="1_880f1"]
+[ext_resource type="Theme" uid="uid://cl0xamvx33oue" path="res://scrollDefault.tres" id="2_12jyy"]
 [ext_resource type="Texture2D" uid="uid://s7e0nsocb2md" path="res://Graphics/WebsiteUI/Digs.png" id="3_5mfrn"]
+[ext_resource type="FontFile" uid="uid://b0ibcawqp78vo" path="res://mingliub.ttc" id="3_ewqkq"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_76b4k"]
 content_margin_right = 12.0
@@ -88,20 +90,20 @@ size_flags_horizontal = 3
 [node name="Title" type="RichTextLabel" parent="MarginContainer/ImageAndTextSeperator/Text"]
 texture_filter = 3
 texture_repeat = 2
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_fonts/normal_font = ExtResource("1_880f1")
-theme_override_fonts/mono_font = ExtResource("1_880f1")
-theme_override_fonts/italics_font = ExtResource("1_880f1")
-theme_override_fonts/bold_italics_font = ExtResource("1_880f1")
-theme_override_fonts/bold_font = ExtResource("1_880f1")
+size_flags_vertical = 2
+theme = ExtResource("2_12jyy")
+theme_override_fonts/normal_font = ExtResource("3_ewqkq")
+theme_override_fonts/mono_font = ExtResource("3_ewqkq")
+theme_override_fonts/italics_font = ExtResource("3_ewqkq")
+theme_override_fonts/bold_italics_font = ExtResource("3_ewqkq")
+theme_override_fonts/bold_font = ExtResource("3_ewqkq")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
-text = "\"WIZARD MAGIC\" Bio-slave says. \"WIZARD MAGIC\" Bio-slave says."
-scroll_active = false
+text = "\"WIZARD MAGIC\" Bio-slave says. \"WIZARD MAGIC\" Bio-slave says. WIZARD MAGIC\" Bio-slave says. \"WIZARD MAGIC\" Bio-slave says. "
 shortcut_keys_enabled = false
-vertical_alignment = 1
 
 [node name="DigsAndRabbithole" type="HBoxContainer" parent="MarginContainer/ImageAndTextSeperator/Text"]
 layout_mode = 2

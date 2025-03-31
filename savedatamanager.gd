@@ -18,7 +18,9 @@ func save():
 		"MyReplies" : Global.myReplies,
 		"MyDMs" : Global.myDMs,
 		"MyMoney" : Global.myMoney,
-		"HowManyPostsPerPage" : Global.howManyPostsPerPage
+		"HowManyPostsPerPage" : Global.howManyPostsPerPage,
+		"StocksChangeTime" : Global.stocksChangeTime,
+		"WindowSize" : Global.windowSize
 	}
 	file.store_var(storedData)
 
@@ -36,6 +38,8 @@ func loadSave():
 		Global.myDMs = storedData["MyDMs"]
 		Global.myMoney = storedData["MyMoney"]
 		Global.howManyPostsPerPage = storedData["HowManyPostsPerPage"]
+		Global.stocksChangeTime = storedData["StocksChangeTime"]
+		Global.windowSize = storedData["WindowSize"]
 		#print(str(Global.stockmarkets) + "\n" + Global.username)
 		file.close()
 

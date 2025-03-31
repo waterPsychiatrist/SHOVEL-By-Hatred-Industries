@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://cl0xamvx33oue"]
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://cl0xamvx33oue"]
 
 [ext_resource type="Texture2D" uid="uid://cre1cilnafhv" path="res://Graphics/WebsiteUI/invisiboid.png" id="1_pqgx8"]
 [ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="1_r6rlr"]
@@ -84,6 +84,99 @@ bg_color = Color(0.211765, 0.176471, 0.231373, 1)
 corner_detail = 1
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fveqe"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4po3v"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.07)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3ymc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maf6s"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjdqs"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.211765, 0.176471, 0.231373, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yl3cf"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oxgi"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="ImageTexture" id="ImageTexture_51wku"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqgx8"]
@@ -162,6 +255,27 @@ HSlider/icons/tick = ExtResource("1_pqgx8")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_6dplq")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_txqm6")
 HSlider/styles/slider = SubResource("StyleBoxFlat_mqkef")
+ItemList/colors/font_color = Color(1, 1, 1, 1)
+ItemList/colors/font_hovered_color = Color(1, 0.827451, 0.588235, 1)
+ItemList/colors/font_hovered_selected_color = Color(1, 1, 1, 1)
+ItemList/colors/font_outline_color = Color(0, 0, 0, 1)
+ItemList/colors/font_selected_color = Color(1, 1, 1, 1)
+ItemList/colors/guide_color = Color(1, 1, 1, 1)
+ItemList/constants/h_separation = 20
+ItemList/constants/icon_margin = 4
+ItemList/constants/line_separation = 4
+ItemList/constants/outline_size = 0
+ItemList/constants/v_separation = 4
+ItemList/font_sizes/font_size = 16
+ItemList/styles/cursor = SubResource("StyleBoxFlat_fveqe")
+ItemList/styles/cursor_unfocused = SubResource("StyleBoxFlat_fveqe")
+ItemList/styles/focus = SubResource("StyleBoxFlat_fveqe")
+ItemList/styles/hovered = SubResource("StyleBoxFlat_4po3v")
+ItemList/styles/hovered_selected = SubResource("StyleBoxFlat_u3ymc")
+ItemList/styles/hovered_selected_focus = SubResource("StyleBoxFlat_maf6s")
+ItemList/styles/panel = SubResource("StyleBoxFlat_mjdqs")
+ItemList/styles/selected = SubResource("StyleBoxFlat_yl3cf")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_3oxgi")
 VScrollBar/icons/decrement = SubResource("ImageTexture_51wku")
 VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_51wku")
 VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_51wku")

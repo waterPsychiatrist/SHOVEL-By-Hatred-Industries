@@ -26,7 +26,8 @@ var profileDesc : String = "A new shoveler scurrying about!"
 #Settings
 var howManyPostsPerPage : int = 60
 var stocksChangeTime : float = 1.5
-
+var windowSize : Vector2 = Vector2(1280, 1024)
+var textSize = 25
 #Randomizer
 
 var noun : String = "Wizards"
