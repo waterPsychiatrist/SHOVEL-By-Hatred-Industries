@@ -49,3 +49,8 @@ func _ready() -> void:
 		$MarginContainer/ImageAndTextSeperator/Text/Comment.text = Global.myReplies.keys()[-1].erase(0, 23)
 		$MarginContainer/ImageAndTextSeperator/Text/Username.text = Global.username
 		
+
+
+func _on_button_pressed() -> void:
+	DisplayServer.tts_stop()
+	DisplayServer.tts_speak(username + " says " + commentText, DisplayServer.tts_get_voices()[0]["id"])

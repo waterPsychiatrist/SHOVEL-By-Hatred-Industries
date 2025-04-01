@@ -77,9 +77,9 @@ func _on_button_pressed() -> void:
 		add_child(window)
 		window.add_child(newPageInstance)
 		window.visible = true
-		isWindowShown = false
+		isWindowShown = true
 
 
 func _on_window_close_requested() -> void:
-	isWindowShown = true
+	isWindowShown = false
 	window.queue_free()

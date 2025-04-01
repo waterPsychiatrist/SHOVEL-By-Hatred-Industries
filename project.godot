@@ -19,6 +19,10 @@ boot_splash/show_image=false
 boot_splash/use_filter=false
 config/icon="uid://s7e0nsocb2md"
 
+[audio]
+
+general/text_to_speech=true
+
 [autoload]
 
 Global="*res://global.gd"
@@ -57,3 +61,4 @@ OpenUASWindow={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true

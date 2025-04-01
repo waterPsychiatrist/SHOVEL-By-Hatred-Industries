@@ -12,7 +12,8 @@ var standardTXTs = [
 	"stocks.txt",
 	"titles.txt",
 	"usernames.txt",
-	"verbs.txt"
+	"verbs.txt",
+	"insults.txt"
 ]
 
 var username : String = "pussySlayer6969"
@@ -99,7 +100,6 @@ func _ready() -> void:
 	randomize()
 
 func getFromTXTFile(whatFile : String) -> String:
-	print(whatFile)
 	var file = FileAccess.open("user://" + whatFile + ".txt", FileAccess.READ)
 	if  file != null:
 		var contents = file.get_as_text()
@@ -143,6 +143,8 @@ func randomizeString(rstr : String, letterCase : bool, eraseSpaces : bool = fals
 			rstr = rstr.replacen("/memeclickedbottom/", Global.CurrentPost[3])
 		if "/rabbithole/" in rstr:
 			rstr = rstr.replacen("/rabbithole/", getFromTXTFile("rabbitholes").replacen(" ", ""))
+		if "/insult/" in rstr:
+			rstr = rstr.replacen("/insult/", getFromTXTFile("insults"))
 		if "/number/" in rstr:
 			rstr = rstr.replacen("/number/", str(randi_range(0, 9)))
 		if "/number2/" in rstr:
