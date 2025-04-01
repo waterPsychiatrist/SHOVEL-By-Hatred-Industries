@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceafoxq73v1b7"]
+[gd_scene load_steps=6 format=3 uid="uid://ceafoxq73v1b7"]
 
 [ext_resource type="Script" uid="uid://dmhn75tdrgm0m" path="res://post_page.gd" id="1_6p83s"]
 [ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="1_an3au"]
 [ext_resource type="Theme" uid="uid://cl0xamvx33oue" path="res://scrollDefault.tres" id="3_6p83s"]
+[ext_resource type="PackedScene" uid="uid://culgi0uca0wuq" path="res://TTSBunny.tscn" id="4_spg8y"]
 
 [sub_resource type="Theme" id="Theme_spg8y"]
 default_font = ExtResource("1_an3au")
@@ -112,3 +113,6 @@ custom_minimum_size = Vector2(1190, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 2
+
+[node name="TTSBunny" parent="." instance=ExtResource("4_spg8y")]
+layout_mode = 1

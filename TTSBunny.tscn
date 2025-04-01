@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://culgi0uca0wuq"]
+
+[ext_resource type="Script" uid="uid://gv3wmnh5rlts" path="res://tts_bunny.gd" id="1_8d3y8"]
+[ext_resource type="Texture2D" uid="uid://ohiasut225if" path="res://Graphics/TTSBunny/ttsbunnytalking1.png" id="2_hdej5"]
+[ext_resource type="Texture2D" uid="uid://dlogmfq3he76s" path="res://Graphics/TTSBunny/ttsbunnytalking2.png" id="3_2vuba"]
+[ext_resource type="Texture2D" uid="uid://cl50nrwgo2fhp" path="res://Graphics/TTSBunny/ttsbunnytalking3.png" id="4_rkmhb"]
+[ext_resource type="Texture2D" uid="uid://bpb6h8fguvlgq" path="res://Graphics/TTSBunny/ttsbunnytalking4.png" id="5_jnxqx"]
+[ext_resource type="Texture2D" uid="uid://buvcwxuvbloo2" path="res://Graphics/TTSBunny/ttsbunnytalking5.png" id="6_rj5ll"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gup0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hdej5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hdej5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2vuba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rkmhb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jnxqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rj5ll")
+}],
+"loop": true,
+"name": &"Talking",
+"speed": 10.0
+}]
+
+[node name="TTSBunny" type="Control" groups=["TTSBunnyNodeGroup"]]
+z_index = 70
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1024.0
+offset_bottom = 1024.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8d3y8")
+
+[node name="BunnyAnim" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1155, 850)
+sprite_frames = SubResource("SpriteFrames_gup0v")
+animation = &"Talking"
+autoplay = "Idle"
+frame_progress = 0.868814

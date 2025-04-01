@@ -3,6 +3,8 @@ var username : String = ""
 var commentText : String = ""
 var opinion : String = "positive"
 var isPlayerComment = false
+@onready var TTSBunny = get_tree().get_first_node_in_group("TTSBunnyNodeGroup")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Randomize Profile Picture
@@ -39,7 +41,7 @@ func _ready() -> void:
 		#Comment Randomize
 		commentText = Global.randomizeString(Global.getFromTXTFile("comments" + str(opinion)), true)
 		$MarginContainer/ImageAndTextSeperator/Text/Comment.text = Global.randomizeString(commentText, true)
-		username = Global.randomizeString(Global.getFromTXTFile("usernames"), true)
+		username = Global.randomizeString(Global.getFromTXTFile("usernames"), false)
 		$MarginContainer/ImageAndTextSeperator/Text/Username.text = "[font_size=" + str(Global.textSize) + "]" + Global.randomizeString(username, false).to_lower().replacen(" ", "")
 	else:
 		#var playerPFP = ImageTexture.create_from_image("user://images/pfp.png")
@@ -53,4 +55,10 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	DisplayServer.tts_stop()
-	DisplayServer.tts_speak(username + " says " + commentText, DisplayServer.tts_get_voices()[0]["id"])
+	TTSBunny.voiceLine = username + " says " + commentText
+	TTSBunny.slide(1)
+	
+	
+func goAwayTTSBunny():
+	print("Fuckoff")
+	TTSBunny.ttsSpeechOver()
