@@ -1,7 +1,21 @@
-[gd_resource type="Theme" load_steps=24 format=3 uid="uid://cl0xamvx33oue"]
+[gd_resource type="Theme" load_steps=25 format=3 uid="uid://cl0xamvx33oue"]
 
 [ext_resource type="Texture2D" uid="uid://cre1cilnafhv" path="res://Graphics/WebsiteUI/invisiboid.png" id="1_pqgx8"]
 [ext_resource type="FontFile" uid="uid://co2qtrd14pwb5" path="res://MingLiU Regular.ttf" id="1_r6rlr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pj23e"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.211765, 0.176471, 0.231373, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.0901961, 0.0705882, 0.054902, 1)
+corner_detail = 1
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l00b2"]
 bg_color = Color(0.211765, 0.176471, 0.231373, 1)
@@ -220,6 +234,9 @@ expand_margin_bottom = 2.0
 
 [resource]
 default_font = ExtResource("1_r6rlr")
+AcceptDialog/colors/title_color = Color(1, 1, 1, 1)
+AcceptDialog/constants/buttons_separation = 10
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_pj23e")
 Button/colors/font_color = Color(1, 0.827451, 0.588235, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)

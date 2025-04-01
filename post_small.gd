@@ -10,6 +10,7 @@ var postPopularity = 0
 var digs = 0
 var opinion = 0
 var window = null
+var isWindowShown = false
 #There are 5 types of post popularity: 1 - Who cares | 2 - Some People | 3 - Normal Post | 4 - Quite Popular | 5 - Industry Moving
 
 func _ready() -> void:
@@ -44,39 +45,41 @@ func makePost():
 	postTitle = Global.randomizeString(Global.getFromTXTFile("titles"), true)
 	$MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole/Digs.text = " [shake rate=10.0 level=" + str(postPopularity)+ " connected=1]" + str(digs)
 	$MarginContainer/ImageAndTextSeperator/Text/Title.text = "[font_size=" + str(Global.textSize) + "]" + postTitle
-	$MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole/RabbitHole.text = "[wave amp=25.0 freq=5.0 connected=1]mall://shovel." + postRabbitHole.to_lower().replacen(" ", "") + ".net"
+	$MarginContainer/ImageAndTextSeperator/Text/DigsAndRabbithole/RabbitHole.text = "[wave amp=25.0 freq=5.0 connected=1]mall://shovel." + postRabbitHole.to_lower().replacen(" ", "").replacen(".", "") + ".net"
 	
 
 
 func _on_button_pressed() -> void:
-	var newPageInstance = newPage.instantiate()
-	Global.CurrentPost = [null, 
-		postTitle, 
-		$MarginContainer/ImageAndTextSeperator.get_node("Images").ttext,
-		$MarginContainer/ImageAndTextSeperator.get_node("Images").btext, 
-		$MarginContainer/ImageAndTextSeperator.get_node("Images").meme, 
-		postRabbitHole,
-		postPopularity,
-		digs,
-		opinion,
-		$MarginContainer/ImageAndTextSeperator.get_node("Images").memeColor
-		]
-	window = Window.new()
-	window.visible = false
-	window.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN 
-	window.size = Vector2(1280, 1024)
-	window.title = postTitle
-	window.content_scale_mode = 2
-	window.content_scale_aspect = 1
-	window.size = Global.windowSize
-	window.content_scale_size = Global.windowSize
-	window.close_requested.connect(_on_window_close_requested)
-	window.add_to_group("SubWindowNodes")
-	add_child(window)
-	if window.get_child_count() == 0:
+	if isWindowShown == false:
+		var newPageInstance = newPage.instantiate()
+		Global.CurrentPost = [null, 
+			postTitle, 
+			$MarginContainer/ImageAndTextSeperator.get_node("Images").ttext,
+			$MarginContainer/ImageAndTextSeperator.get_node("Images").btext, 
+			$MarginContainer/ImageAndTextSeperator.get_node("Images").meme, 
+			postRabbitHole,
+			postPopularity,
+			digs,
+			opinion,
+			$MarginContainer/ImageAndTextSeperator.get_node("Images").memeColor
+			]
+		window = Window.new()
+		window.visible = false
+		window.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN 
+		window.size = Vector2(1280, 1024)
+		window.title = postTitle
+		window.content_scale_mode = 2
+		window.content_scale_aspect = 1
+		window.size = Global.windowSize
+		window.content_scale_size = Global.windowSize
+		window.close_requested.connect(_on_window_close_requested)
+		window.add_to_group("SubWindowNodes")
+		add_child(window)
 		window.add_child(newPageInstance)
-	window.visible = true
+		window.visible = true
+		isWindowShown = false
 
 
 func _on_window_close_requested() -> void:
+	isWindowShown = true
 	window.queue_free()

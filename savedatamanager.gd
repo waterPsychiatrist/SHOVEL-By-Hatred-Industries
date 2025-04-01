@@ -78,7 +78,6 @@ func checkIfTXTsDoExist():
 func performTXTCreationWizardry(whichFile):
 	var file = FileAccess.open("res://StartupTextFiles/" + whichFile, FileAccess.READ)
 	var createdFile = FileAccess.open("user://" + whichFile, FileAccess.WRITE_READ)
-	print(file.get_as_text())
 	createdFile.store_string(file.get_as_text())
 	file.close()
 	createdFile.close()

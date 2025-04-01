@@ -125,6 +125,10 @@ func randomizeString(rstr : String, letterCase : bool, eraseSpaces : bool = fals
 	if rstr.is_empty() == false:
 		if "/noun/" in rstr:
 			rstr = rstr.replacen("/noun/", getFromTXTFile("nouns"))
+		if "/noun2/" in rstr:
+			rstr = rstr.replacen("/noun2/", getFromTXTFile("nouns"))
+		if "/noun3/" in rstr:
+			rstr = rstr.replacen("/noun3/", getFromTXTFile("nouns"))
 		if "/pp/" in rstr:
 			rstr = rstr.replacen("/pp/", getFromTXTFile("politicalparties"))
 		if "/people/" in rstr:
@@ -173,6 +177,9 @@ func errorDialogPopup():
 		errormsg.exclusive = true
 		errormsg.visible = true
 		errormsg.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN 
+		errormsg.theme = load("res://scrollDefault.tres")
+		errormsg.title = "Error randomizing string / loading from txt file."
+		errormsg.get_label().vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		errormsg.dialog_text = "YOU FUCKED UP, EITHER A STRING IN THE TXTS IS BLANK OR YOU SHOULD INSTALL TXTS MANUALLY AND REOPEN THE PROGRAM"
 		get_node("/root/MainPage").add_child(errormsg)
 		isAcceptDialogReal = true
